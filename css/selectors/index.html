@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector</title>
+
+    <style>
+        .class1 {
+            background-color: aqua;
+        }
+
+        .class2 {
+            color: black;
+        }
+
+        .class3 {
+            background-color: red;
+        }
+
+        .nested1 {
+            color: blue;
+        }
+
+        .nested2 {
+            color: antiquewhite;
+        }
+
+        #id {
+            background-color: blue;
+            color: white;
+        }
+
+        div>p {
+            background-color: black;
+            color: white;
+        }
+
+        div span {
+            background-color: rgb(0, 255, 0);
+        }
+
+        /* universal selector */
+        *
+        {
+            padding:10px;
+        }
+
+        /* pseudo selector */
+
+        a:visited
+        {
+            columns: green;
+        }
+
+        a:link 
+    {
+        color:red;
+    }
+
+    a:active 
+{
+    color: blue;
+}
+
+a:hover 
+{
+    background-color: red;
+    color: blue;
+}
+    
+    
+    </style>
+
+</head>
+
+<body>
+    <!-- class selector -->
+
+    <div class="class1 class2"> it is class selector </div>
+    <div class="class3">
+        <p class="nested1">nested para 1</p>
+
+        <p class="nested2">nested para 2</p>
+
+        it is class selector2
+    </div>
+
+    <!-- id selector -->
+
+    <div id="id">
+        it is id selector.
+    </div>
+
+    <!-- child selector -->
+
+    <div>
+        <p>it is child of div</p>
+        <span>it is also a child</span>
+    </div>
+
+    <!-- descendant selector -->
+
+    <div>
+        <p>
+            <span>
+                it is descendant of div.
+            </span>
+        </p>
+    </div>
+
+<a href="https:yahoo.com">open yahoo</a>
+<a href="https:google.com">open google</a>
+
+</body>
+
+</html>

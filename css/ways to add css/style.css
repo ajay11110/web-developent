@@ -1,0 +1,11 @@
+div
+    {
+        color :aqua;
+        background-color: black;
+    }
+
+    span,p
+    {
+        color: blue;
+        background-color: blanchedalmond;
+    }

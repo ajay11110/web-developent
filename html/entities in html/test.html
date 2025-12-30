@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Space Shooter</title>
+
+<style>
+body{
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:linear-gradient(to bottom,#0a0a2e,#16213e);
+    font-family:Courier New, monospace;
+    color:white;
+}
+canvas{
+    border:3px solid #00ff00;
+    background:black;
+}
+#ui{margin-top:10px;font-size:20px}
+#startBtn{
+    margin-top:15px;
+    padding:10px 30px;
+    font-size:18px;
+    background:#00ff00;
+    border:none;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+<div>
+<canvas id="gameCanvas" width="600" height="800"></canvas>
+<div id="ui">
+Score: <span id="score">0</span> |
+Health: <span id="health">0</span>
+</div>
+<button id="startBtn">START GAME</button>
+</div>
+
+<script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+const scoreEl = document.getElementById("score");
+const healthEl = document.getElementById("health");
+const startBtn = document.getElementById("startBtn");
+
+/* =========================
+   CUSTOM SETTINGS
+========================= */
+const MAX_HEALTH = 150;   // 🔥 CUSTOM HEALTH HERE
+
+let gameRunning=false;
+let score=0;
+let health=MAX_HEALTH;
+
+/* Player */
+const player={
+    x:canvas.width/2-20,
+    y:canvas.height-60,
+    w:40,
+    h:40,
+    speed:5
+};
+
+let bullets=[], enemies=[];
+let spawnTimer=0;
+
+/* =========================
+   INPUT – KEYBOARD
+========================= */
+let keys={};
+document.addEventListener("keydown",e=>{
+    keys[e.key]=true;
+    if(e.key===" " && gameRunning) shoot();
+});
+document.addEventListener("keyup",e=>keys[e.key]=false);
+
+/* =========================
+   INPUT – MOUSE MOVE
+========================= */
+canvas.addEventListener("mousemove",e=>{
+    if(!gameRunning) return;
+    const rect=canvas.getBoundingClientRect();
+    player.x=e.clientX-rect.left-player.w/2;
+});
+
+/* =========================
+   INPUT – 2 FINGER TOUCH
+========================= */
+canvas.addEventListener("touchmove",e=>{
+    if(e.touches.length===2 && gameRunning){
+        const rect=canvas.getBoundingClientRect();
+        const touch=e.touches[0];
+        player.x=touch.clientX-rect.left-player.w/2;
+    }
+},{passive:false});
+
+/* =========================
+   GAME FUNCTIONS
+========================= */
+function shoot(){
+    bullets.push({
+        x:player.x+player.w/2-2,
+        y:player.y,
+        w:4,h:10,s:8
+    });
+}
+
+function spawnEnemy(){
+    enemies.push({
+        x:Math.random()*(canvas.width-30),
+        y:-30,w:30,h:30,s:2+Math.random()*2
+    });
+}
+
+function collide(a,b){
+    return a.x<b.x+b.w && a.x+a.w>b.x &&
+           a.y<b.y+b.h && a.y+a.h>b.y;
+}
+
+function update(){
+    if(keys["ArrowLeft"] && player.x>0) player.x-=player.speed;
+    if(keys["ArrowRight"] && player.x<canvas.width-player.w) player.x+=player.speed;
+
+    bullets=bullets.filter(b=>{b.y-=b.s;return b.y>0;});
+
+    spawnTimer++;
+    if(spawnTimer>60){spawnEnemy();spawnTimer=0;}
+
+    enemies.forEach((e,i)=>{
+        e.y+=e.s;
+
+        if(e.y>canvas.height){
+            health-=10;
+            enemies.splice(i,1);
+        }
+
+        bullets.forEach((b,bi)=>{
+            if(collide(b,e)){
+                bullets.splice(bi,1);
+                enemies.splice(i,1);
+                score+=10;
+            }
+        });
+
+        if(collide(player,e)){
+            health-=20;
+            enemies.splice(i,1);
+        }
+    });
+
+    if(health<=0) gameOver();
+
+    scoreEl.textContent=score;
+    healthEl.textContent=health;
+}
+
+function draw(){
+    ctx.fillStyle="black";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle="#00ff00";
+    ctx.beginPath();
+    ctx.moveTo(player.x+player.w/2,player.y);
+    ctx.lineTo(player.x,player.y+player.h);
+    ctx.lineTo(player.x+player.w,player.y+player.h);
+    ctx.fill();
+
+    ctx.fillStyle="yellow";
+    bullets.forEach(b=>ctx.fillRect(b.x,b.y,b.w,b.h));
+
+    ctx.fillStyle="red";
+    enemies.forEach(e=>ctx.fillRect(e.x,e.y,e.w,e.h));
+}
+
+function loop(){
+    if(!gameRunning) return;
+    update(); draw();
+    requestAnimationFrame(loop);
+}
+
+function startGame(){
+    gameRunning=true;
+    score=0;
+    health=MAX_HEALTH;
+    bullets=[]; enemies=[];
+    startBtn.style.display="none";
+    loop();
+}
+
+function gameOver(){
+    gameRunning=false;
+    ctx.fillStyle="rgba(0,0,0,.7)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle="red";
+    ctx.font="48px Courier New";
+    ctx.fillText("GAME OVER",canvas.width/2-140,canvas.height/2);
+    startBtn.style.display="block";
+}
+
+startBtn.onclick=startGame;
+healthEl.textContent=MAX_HEALTH;
+</script>
+</body>
+</html>
