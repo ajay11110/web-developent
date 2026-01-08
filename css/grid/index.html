@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grid</title>
+</head>
+
+<style>
+    .con {
+        display: grid;
+        /* grid-template-columns: 200px 200px 200px;
+        grid-template-rows: 200px 200px 200px;
+
+        or to give names */
+
+        grid-template-columns: [first] 200px [second] 200px [tisra] 200px;
+        grid-template-rows: 200px 200px 200px;
+
+
+        gap: 5px;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .item {
+        border: 2px solid red;
+        padding: 50px;
+
+    }
+
+    .item2 {
+        /* grid-row: 1/2;
+        grid-column: 1/2;
+
+        or we can use */
+
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-row-start: 1;
+        grid-column-start: 1;
+        grid-column-end: 2;
+
+    }
+
+     .item3 {
+        grid-row: 1/2;
+        grid-column: 1/2;
+
+    }
+
+    .item10 {
+        grid-row: 1/2;
+    }
+
+    .item5 {
+         grid-row: 2/3;
+        grid-column: 1/4;
+    }
+
+    .item6 {
+        grid-column: 2/4;
+    }
+
+
+</style>
+
+<body>
+
+    <div class="con">
+
+        <div class="item item1">
+            it is item 1
+        </div>
+
+        <div class="item item2">
+            it is item 2
+        </div>
+
+
+        <div class="item item3">
+            it is item 3
+        </div>
+
+
+        <div class="item item4">
+            it is item 4
+        </div>
+
+
+        <div class="item item5">
+            it is item 5
+        </div>
+
+
+        <div class="item item6">
+            it is item 6
+        </div>
+
+
+        <div class="item item7">
+            it is item 7
+        </div>
+
+
+        <div class="item item8">
+            it is item 8
+        </div>
+
+
+        <div class="item item9">
+            it is item 9
+        </div>
+
+        <div class="item item10">
+            it is item 10
+        </div>
+
+
+    </div>
+
+    <div class="con2">
+
+        <div class="item item1">
+            it is item 1
+        </div>
+
+        <div class="item item2">
+            it is item 2
+        </div>
+
+
+        <div class="item item3">
+            it is item 3
+        </div>
+
+
+        <div class="item item4">
+            it is item 4
+        </div>
+
+
+        <div class="item item5">
+            it is item 5
+        </div>
+
+
+        <div class="item item6">
+            it is item 6
+        </div>
+
+
+        <div class="item item7">
+            it is item 7
+        </div>
+
+
+        <div class="item item8">
+            it is item 8
+        </div>
+
+
+        <div class="item item9">
+            it is item 9
+        </div>
+
+        <div class="item item10">
+            it is item 10
+        </div>
+
+
+    </div>
+</body>
+
+</html>

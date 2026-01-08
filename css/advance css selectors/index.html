@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More on CSS Selectors</title>
+    <style>
+        /* .bx:first-child{
+            background-color: red;
+            color: blue;
+            border: 2px solid white;
+        }
+        ..................it is not working. ..................*/
+
+        .bx::first-line {
+            color: green;
+        }
+
+        .boxes *{
+            color: blue;
+            border: 2px solid black;
+        }
+
+        p, a, .box, [data-color="primary"]{
+            padding-top: 45px;
+            margin: 5px;
+        }
+
+
+        [data-color="sec"] {
+
+            color: rgb(68, 165, 53);
+
+        }
+
+        /* .bx:nth-child(odd){
+            background-color: blue;
+            color: aqua;
+        }
+
+        .bx:nth-last-child(2){
+            background-color: red;
+        }
+
+        ------------not working------------ */
+        
+        .boxes::before {
+            content: "Ajay is good";
+            color: blue;
+        }
+
+        .boxes::after {
+            content: "Sigma course is also good";
+            color: red;
+        }
+
+        ::selection {
+            background-color: black;
+            color: aqua;
+        }
+
+        .box::first-letter {
+            color: peru;
+            font-size: 45px;
+        }
+
+        input::placeholder {
+            color: rgb(84, 84, 88);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="boxes">
+        <div data-color="primary" class="box">I am first box</div>
+        <div class="box">Hey I am a box</div>
+        <div class="box">Hey I am a box</div>
+        <input type="text" placeholder="Type your name here">
+    </div>
+
+    <div class="bx">
+        <div class="b1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo officiis, libero ullam magni
+            excepturi dolores! Eaque, minima. Reprehenderit, illo enim. Laboriosam alias, sit praesentium itaque natus
+            voluptatum mollitia ad fuga aperiam tempore perspiciatis deleniti harum, adipisci accusantium expedita
+            dolore. Tenetur et non commodi, itaque placeat accusamus molestias expedita veniam saepe doloremque. Numquam
+            eaque iste non officia delectus voluptas facilis! Ratione natus inventore facere quasi similique molestias
+            doloribus reprehenderit voluptates aliquid quibusdam, ullam et! Impedit repellat iure ipsam ullam excepturi,
+            sed, omnis debitis rerum ut a ratione molestiae, quam commodi delectus non nostrum magnam temporibus dolorum
+            dicta itaque! Itaque, tenetur? Sint?</div>
+        <br>
+        <div class="b2" data-color="sec">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo officiis, libero ullam magni
+            excepturi dolores! Eaque, minima. Reprehenderit, illo enim. Laboriosam alias, sit praesentium itaque natus
+            voluptatum mollitia ad fuga aperiam tempore perspiciatis deleniti harum, adipisci accusantium expedita
+            dolore. Tenetur et non commodi, itaque placeat accusamus molestias expedita veniam saepe doloremque. Numquam
+            eaque iste non officia delectus voluptas facilis! Ratione natus inventore facere quasi similique molestias
+            doloribus reprehenderit voluptates aliquid quibusdam, ullam et! Impedit repellat iure ipsam ullam excepturi,
+            sed, omnis debitis rerum ut a ratione molestiae, quam commodi delectus non nostrum magnam temporibus dolorum
+            dicta itaque! Itaque, tenetur? Sint?</div>
+        <br>
+        <div class="b3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo officiis, libero ullam magni
+            excepturi dolores! Eaque, minima. Reprehenderit, illo enim. Laboriosam alias, sit praesentium itaque natus
+            voluptatum mollitia ad fuga aperiam tempore perspiciatis deleniti harum, adipisci accusantium expedita
+            dolore. Tenetur et non commodi, itaque placeat accusamus molestias expedita veniam saepe doloremque. Numquam
+            eaque iste non officia delectus voluptas facilis! Ratione natus inventore facere quasi similique molestias
+            doloribus reprehenderit voluptates aliquid quibusdam, ullam et! Impedit repellat iure ipsam ullam excepturi,
+            sed, omnis debitis rerum ut a ratione molestiae, quam commodi delectus non nostrum magnam temporibus dolorum
+            dicta itaque! Itaque, tenetur? Sint?</div>
+        <br>
+        <div class="b4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo officiis, libero ullam magni
+            excepturi dolores! Eaque, minima. Reprehenderit, illo enim. Laboriosam alias, sit praesentium itaque natus
+            voluptatum mollitia ad fuga aperiam tempore perspiciatis deleniti harum, adipisci accusantium expedita
+            dolore. Tenetur et non commodi, itaque placeat accusamus molestias expedita veniam saepe doloremque. Numquam
+            eaque iste non officia delectus voluptas facilis! Ratione natus inventore facere quasi similique molestias
+            doloribus reprehenderit voluptates aliquid quibusdam, ullam et! Impedit repellat iure ipsam ullam excepturi,
+            sed, omnis debitis rerum ut a ratione molestiae, quam commodi delectus non nostrum magnam temporibus dolorum
+            dicta itaque! Itaque, tenetur? Sint?</div>
+        <br>
+        <div class="b5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo officiis, libero ullam magni
+            excepturi dolores! Eaque, minima. Reprehenderit, illo enim. Laboriosam alias, sit praesentium itaque natus
+            voluptatum mollitia ad fuga aperiam tempore perspiciatis deleniti harum, adipisci accusantium expedita
+            dolore. Tenetur et non commodi, itaque placeat accusamus molestias expedita veniam saepe doloremque. Numquam
+            eaque iste non officia delectus voluptas facilis! Ratione natus inventore facere quasi similique molestias
+            doloribus reprehenderit voluptates aliquid quibusdam, ullam et! Impedit repellat iure ipsam ullam excepturi,
+            sed, omnis debitis rerum ut a ratione molestiae, quam commodi delectus non nostrum magnam temporibus dolorum
+            dicta itaque! Itaque, tenetur? Sint?</div>
+
+             <br>
+        <div class="b6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo officiis, libero ullam magni
+            excepturi dolores! Eaque, minima. Reprehenderit, illo enim. Laboriosam alias, sit praesentium itaque natus
+            voluptatum mollitia ad fuga aperiam tempore perspiciatis deleniti harum, adipisci accusantium expedita
+            dolore. Tenetur et non commodi, itaque placeat accusamus molestias expedita veniam saepe doloremque. Numquam
+            eaque iste non officia delectus voluptas facilis! Ratione natus inventore facere quasi similique molestias
+            doloribus reprehenderit voluptates aliquid quibusdam, ullam et! Impedit repellat iure ipsam ullam excepturi,
+            sed, omnis debitis rerum ut a ratione molestiae, quam commodi delectus non nostrum magnam temporibus dolorum
+            dicta itaque! Itaque, tenetur? Sint?</div>
+
+             <br>
+        <div class="b7">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo officiis, libero ullam magni
+            excepturi dolores! Eaque, minima. Reprehenderit, illo enim. Laboriosam alias, sit praesentium itaque natus
+            voluptatum mollitia ad fuga aperiam tempore perspiciatis deleniti harum, adipisci accusantium expedita
+            dolore. Tenetur et non commodi, itaque placeat accusamus molestias expedita veniam saepe doloremque. Numquam
+            eaque iste non officia delectus voluptas facilis! Ratione natus inventore facere quasi similique molestias
+            doloribus reprehenderit voluptates aliquid quibusdam, ullam et! Impedit repellat iure ipsam ullam excepturi,
+            sed, omnis debitis rerum ut a ratione molestiae, quam commodi delectus non nostrum magnam temporibus dolorum
+            dicta itaque! Itaque, tenetur? Sint?</div>
+    </div>
+</body>
+
+</html>

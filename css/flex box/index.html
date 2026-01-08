@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flex box</title>
+
+    <style>
+         
+         *{
+            background-color: black;
+            margin: 0;
+            padding: 0;
+         } 
+
+        .first {
+            display: flex;
+            border: 2px solid red;
+            margin: 5px;
+        }
+
+        .a {
+            border: 2px solid green;
+            color: green;
+            padding: 15px;
+            margin: 5px;
+            width: 20px;
+            height: 20px;
+
+        }
+
+        .second {
+            display: flex;
+            border: 2px solid red;
+            margin: 5px;
+            justify-content: center;
+
+        }
+
+        .third {
+            display: flex;
+            border: 2px solid red;
+            margin: 5px;
+            justify-content: flex-start;
+
+        }
+
+        .four {
+            display: flex;
+            border: 2px solid red;
+            margin: 5px;
+            justify-content: space-around;
+
+        }
+
+        .five {
+            display: flex;
+            border: 2px solid red;
+            margin: 5px;
+            justify-content: space-between;
+
+        }
+
+        .six {
+            display: flex;
+            border: 2px solid red;
+            margin: 5px;
+            align-items: center;
+            height: 200px;
+
+        }
+
+        .seven {
+            display: flex;
+            border: 2px solid red;
+            margin: 5px;
+            flex-wrap: wrap;
+        }
+
+        .eight {
+            display: flex;
+            border: 2px solid red;
+            margin: 5px;
+            flex-wrap: wrap-reverse;
+        }
+
+        .nine {
+            display: flex;
+            border: 2px solid red;
+            margin: 5px;
+            flex-direction: column;
+            /* align-items: center; */
+        }
+
+        .ten {
+            display: flex;
+            border: 2px solid red;
+            margin: 5px;
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+
+        .a11 {
+            display: flex;
+            border: 2px solid red;
+            flex-flow: row wrap;
+            gap: 10px;
+            margin: 5px;
+        }
+
+        .a12 {
+            display: flex;
+            border: 2px solid red;
+            flex-flow: row wrap;
+            gap: 3px 50px;
+            margin: 5px;
+        }
+
+        .a13 {
+            display: flex;
+            border: 2px solid red;
+            /* flex-flow: row wrap; */
+            gap: 10px;
+            margin: 5px;
+        }
+
+        .b1 {
+            order: 1;
+        }
+
+        .b2 {
+            flex-grow: 2;
+        }
+
+        .b3 {
+            flex-shrink: 3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="first">
+        <div class="a1 a">1</div>
+        <div class="a2 a">2</div>
+        <div class="a3 a">3</div>
+        <div class="a4 a">4</div>
+        <div class="a5 a">5</div>
+        <div class="a6 a">6</div>
+        <div class="a7 a">7</div>
+        <div class="a8 a">8</div>
+        <div class="a9 a">9</div>
+    </div>
+
+    <div class="second">
+        <div class="a1 a">1</div>
+        <div class="a2 a">2</div>
+        <div class="a3 a">3</div>
+        <div class="a4 a">4</div>
+        <div class="a5 a">5</div>
+        <div class="a6 a">6</div>
+        <div class="a7 a">7</div>
+        <div class="a8 a">8</div>
+        <div class="a9 a">9</div>
+    </div>
+
+    <div class="third">
+        <div class="a1 a">1</div>
+        <div class="a2 a">2</div>
+        <div class="a3 a">3</div>
+        <div class="a4 a">4</div>
+        <div class="a5 a">5</div>
+        <div class="a6 a">6</div>
+        <div class="a7 a">7</div>
+        <div class="a8 a">8</div>
+        <div class="a9 a">9</div>
+    </div>
+
+    <div class="four">
+        <div class="a1 a">1</div>
+        <div class="a2 a">2</div>
+        <div class="a3 a">3</div>
+        <div class="a4 a">4</div>
+        <div class="a5 a">5</div>
+        <div class="a6 a">6</div>
+        <div class="a7 a">7</div>
+        <div class="a8 a">8</div>
+        <div class="a9 a">9</div>
+    </div>
+
+    <div class="five">
+        <div class="a1 a">1</div>
+        <div class="a2 a">2</div>
+        <div class="a3 a">3</div>
+        <div class="a4 a">4</div>
+        <div class="a5 a">5</div>
+        <div class="a6 a">6</div>
+        <div class="a7 a">7</div>
+        <div class="a8 a">8</div>
+        <div class="a9 a">9</div>
+    </div>
+
+    <div class="six">
+        <div class="a1 a">1</div>
+        <div class="a2 a">2</div>
+        <div class="a3 a">3</div>
+        <div class="a4 a">4</div>
+        <div class="a5 a">5</div>
+        <div class="a6 a">6</div>
+        <div class="a7 a">7</div>
+        <div class="a8 a">8</div>
+        <div class="a9 a">9</div>
+    </div>
+
+    <div class="seven">
+        <div class="a1 a">1</div>
+        <div class="a2 a">2</div>
+        <div class="a3 a">3</div>
+        <div class="a4 a">4</div>
+        <div class="a5 a">5</div>
+        <div class="a6 a">6</div>
+        <div class="a7 a">7</div>
+        <div class="a8 a">8</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">last</div>
+    </div>
+
+
+    <div class="eight">
+        <div class="a1 a">1</div>
+        <div class="a2 a">2</div>
+        <div class="a3 a">3</div>
+        <div class="a4 a">4</div>
+        <div class="a5 a">5</div>
+        <div class="a6 a">6</div>
+        <div class="a7 a">7</div>
+        <div class="a8 a">8</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">last</div>
+    </div>
+
+    <div class="nine">
+        <div class="a1 a">1</div>
+        <div class="a2 a">2</div>
+        <div class="a3 a">3</div>
+        <div class="a4 a">4</div>
+        <div class="a5 a">5</div>
+        <div class="a6 a">6</div>
+        <div class="a7 a">7</div>
+        <div class="a8 a">8</div>
+        <div class="a9 a">9</div>
+    </div>
+
+    <div class="ten">
+        <div class="a1 a">1</div>
+        <div class="a2 a">2</div>
+        <div class="a3 a">3</div>
+        <div class="a4 a">4</div>
+        <div class="a5 a">5</div>
+        <div class="a6 a">6</div>
+        <div class="a7 a">7</div>
+        <div class="a8 a">8</div>
+        <div class="a9 a">9</div>
+    </div>
+
+    <div class="a11">
+        <div class="a1 a">1</div>
+        <div class="a2 a">2</div>
+        <div class="a3 a">3</div>
+        <div class="a4 a">4</div>
+        <div class="a5 a">5</div>
+        <div class="a6 a">6</div>
+        <div class="a7 a">7</div>
+        <div class="a8 a">8</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">last</div>
+    </div>
+
+
+    <div class="a12">
+        <div class="a1 a">1</div>
+        <div class="a2 a">2</div>
+        <div class="a3 a">3</div>
+        <div class="a4 a">4</div>
+        <div class="a5 a">5</div>
+        <div class="a6 a">6</div>
+        <div class="a7 a">7</div>
+        <div class="a8 a">8</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">9</div>
+        <div class="a9 a">last</div>
+    </div>
+
+    <div class="a13">
+        <div class="b1 a">1</div>
+        <div class="b2 a">2</div>
+        <div class="b3 a">3</div>
+        <div class="b4 a">4</div>
+        <div class="b5 a">5</div>
+        <div class="b6 a">6</div>
+        <div class="b7 a">7</div>
+        <div class="b8 a">8</div>
+        <div class="b9 a">9</div>
+    </div>
+
+</body>
+
+</html>

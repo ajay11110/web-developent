@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position property</title>
+
+    <style>
+        .box {
+            /* position:static; */
+        }
+
+        .bx {
+            border: 3px solid black;
+            padding: 15px;
+            margin: 7px;
+            height: 40px;
+
+
+        }
+
+        .b1 {
+            background-color: aqua;
+            position: relative;
+            top: 30px;
+            left: 40px;
+            /* z-index: 1; */
+        }
+
+        .b2 {
+            background-color: green;
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            width: 455px;
+        }
+
+        .b3 {
+            background-color: blue;
+        }
+
+        .b4 {
+            background-color: red;
+            position: sticky;
+            top: 2px;
+        }
+
+        .b5 {
+            background-color: violet;
+        }
+
+        .b6
+        {
+            background-color: black;
+        }
+
+        .b7
+        {
+            background-color: peru;
+        }
+
+        .bb {
+            border: 3px solid black;
+            margin: 15px;
+            padding: 30px;
+            height: 100px;
+        }
+
+        .bb1 {
+            background-color: indianred;
+            position: fixed;
+            width: 459px;
+        }
+
+        .bb2 {
+            background-color: indigo;
+        }
+
+        .bb3 {
+            background-color: yellow;
+        }
+
+        .bb4 {
+            background-color: yellowgreen;
+        }
+
+        .bb5 {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="bx b1"></div>
+        <div class="bx b2"></div>
+        <div class="bx b3"></div>
+        <div class="bx b4"></div>
+        <div class="bx b5"></div>
+        <div class="bx b6"></div>
+        <div class="bx b7"></div>
+    </div>
+
+    <div class="box2">
+        <div class="bb bb1"></div>
+        <div class="bb bb2"></div>
+        <div class="bb bb3"></div>
+        <div class="bb bb4"></div>
+        <div class="bb bb5"></div>
+
+    </div>
+</body>
+
+</html>
