@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .con {
+           
+            background-color: aqua;
+
+        }
+
+        .bx {
+            width: 20vw;
+            height: 10vh;
+            background-color: goldenrod;
+            border: 2px solid black;
+            padding: 5px;
+            margin: 5px;
+
+
+        }
+
+        .bx1 {
+            animation: animation1;
+            animation-duration: 3s;
+            animation-iteration-count: 2;
+            animation-timing-function: ease-in-out;
+            animation-delay: 2s;
+            animation-direction: reverse;
+            animation-play-state: running;
+            animation-fill-mode: forwards;
+        }
+
+        .bx2 {
+
+            animation: animation2 3s ease-in 1s infinite alternate-reverse forwards;
+        }
+
+        .bx3 {
+            animation: animation2 3s ease-in 1s infinite alternate forwards;
+        }
+
+        .bx4 {
+            animation: animation3 3s ease-in 1s infinite alternate-reverse forwards;
+        }
+
+        .bx5 {
+            animation: animation4 3s ease-in 1s infinite alternate-reverse forwards;
+        }
+
+        .bx6 {
+            animation: animation2 4s ease-in 1s infinite alternate-reverse forwards , animation4 3s ease-in 1s infinite alternate-reverse forwards;;
+        }
+
+        .bx7 {
+            animation: animation5 3s ease-in 1s infinite alternate-reverse forwards;
+        }
+
+        .bx8 {
+            animation: animation5 3s ease-in 1s infinite alternate-reverse forwards , 
+             animation4 3s ease-in 1s infinite alternate-reverse forwards , 
+             animation3 3s ease-in 1s infinite alternate-reverse forwards , 
+             animation2 3s ease-in 1s infinite alternate-reverse forwards , 
+             animation1 3s ease-in 1s infinite alternate-reverse forwards ;
+        }
+
+
+
+        @keyframes animation1 {
+            from {
+                background-color: green;
+
+            }
+
+            to {
+                background-color: blue;
+                transform: translateX(500px);
+            }
+        }
+
+        @keyframes animation2 {
+            from {
+                background-color: rgb(116, 97, 211);
+
+            }
+
+            to {
+                background-color: rgb(253, 87, 37);
+                transform: translateX(500px);
+            }
+        }
+
+         @keyframes animation3 {
+            from {
+                background-color: rgb(116, 97, 211);
+
+            }
+
+            to {
+                background-color: rgb(253, 87, 37);
+                transform: translateY(500px);
+            }
+        }
+
+         @keyframes animation4 {
+            from {
+                background-color: rgb(116, 97, 211);
+
+            }
+
+            to {
+                background-color: rgb(253, 87, 37);
+                transform: rotate(180deg);
+            }
+        }
+
+        @keyframes animation5 {
+           0% {
+            background-color: #e12424;
+           }
+           20% {
+            background-color: #e214d4;
+           }
+           40% {
+            background-color: aqua;
+           }
+           60% {
+            background-color: #c9cb1b;
+           }
+           80% {
+            background-color: #0d1ed8;
+           }
+           100% {
+            background-color: #1dcbea;
+           }
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="con">
+        <div class="bx bx1">it is box</div>
+        <div class="bx bx2">it is box</div>
+        <div class="bx bx3">it is box</div>
+        <div class="bx bx4">it is box</div>
+        <div class="bx bx5">it is box</div>
+        <div class="bx bx6">it is box</div>
+        <div class="bx bx7">it is box</div>
+        <div class="bx bx8">it is box</div>
+    </div>
+</body>
+
+</html>

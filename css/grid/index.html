@@ -20,7 +20,7 @@
 
 
         gap: 5px;
-        justify-items: center;
+        /* justify-items: center; */
         align-items: center;
     }
 
@@ -38,13 +38,12 @@
 
         grid-row-start: 1;
         grid-row-end: 2;
-        grid-row-start: 1;
         grid-column-start: 1;
         grid-column-end: 2;
 
     }
 
-     .item3 {
+    .item3 {
         grid-row: 1/2;
         grid-column: 1/2;
 
@@ -55,7 +54,7 @@
     }
 
     .item5 {
-         grid-row: 2/3;
+        grid-row: 2/3;
         grid-column: 1/4;
     }
 
@@ -63,6 +62,50 @@
         grid-column: 2/4;
     }
 
+    /* ------------ area method ------------ */
+
+    .con2 {
+        display: grid;
+        grid-template-areas: " nav nav nav nav" " side blank article article" "foot foot foot foot";
+        gap: 5px;
+        /* justify-items: center; */
+        align-items: center;
+    }
+
+    .itemm1 {
+        grid-area: nav;
+    }
+
+    .itemm2 {
+        grid-area: side;
+    }
+
+    .itemm3 {
+        grid-area: article;
+    }
+
+    .itemm4 {
+        grid-area: foot;
+    }
+
+    /* -------------- fr unit ------------ */
+
+ .con3 {
+        display: grid;
+        width: 800px;
+        /* grid-template-columns: 200px 200px 200px;
+        grid-template-rows: 200px 200px 200px;
+
+        or to give names */
+
+        grid-template-columns: 1fr 1fr 2fr;   /*  here 1fr=800/4 */
+        grid-template-rows: 200px 200px 200px;
+
+
+        gap: 5px;
+        /* justify-items: center; */
+        align-items: center;
+    }
 
 </style>
 
@@ -120,7 +163,38 @@
 
     </div>
 
+    <!-- ------------ area method --------- -->
+
     <div class="con2">
+
+        <div class="item itemm1">
+            nav
+        </div>
+
+        <div class="item itemm2">
+            side
+        </div>
+
+
+        <div class="item itemm3">
+            article
+        </div>
+
+
+        <div class="item itemm4">
+            foot
+        </div>
+
+
+        <div class="item itemm5">
+            blank
+        </div>
+
+    </div>
+
+    <!-- -------------fr unit -------------- -->
+
+    <div class="con3">
 
         <div class="item item1">
             it is item 1
@@ -171,6 +245,7 @@
 
 
     </div>
+
 </body>
 
 </html>

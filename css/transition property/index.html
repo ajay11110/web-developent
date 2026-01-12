@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition</title>
+
+    <style>
+        .con {
+            width: 80vw;
+            height: 80vh;
+            background-color: aqua;
+        }
+
+        .box1 {
+            background-color: red;
+            padding: 2px;
+            width: 10vw;
+            height: 15vh;
+
+        }
+
+        .bx {
+
+            translate: 50px;
+            transition-property: translate;
+            transition-duration: 3s;
+            transition-timing-function: ease-in-out;
+            transition-delay: 1s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="con">
+
+        <div class="box1 bx">box1</div>
+    </div>
+</body>
+
+</html>
+
+
+<!-- ----------not working properly ------------ -->
