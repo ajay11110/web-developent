@@ -68,7 +68,7 @@
 
       .text1 {
           color: white;
-          font-size: 62px;
+          font-size: 54px;
           font-weight: bolder;
           /* margin: 10px; */
       }
@@ -144,9 +144,11 @@
       .card {
           width: 180px;
           height: 250px;
+          flex-shrink: 0;
           background-color: rgba(139, 107, 244, 0.308);
           border: 2px solid black;
           border-radius: 10px;
+          background-image:url(https://occ-0-3213-3647.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABXMlNt8lRlEH5nkoYUHkzaYFsKJJvQq-3wQ4-DyYWQmKlxu9qrynyD5cNZEHPowiQL9IPEPbTSBM9B-id8nR8QPVfL1P_CQjPOqe5ZsDbekwH5AVJbhS3v4gSBXhZb4qdcE6.webp?r=e8a);
       }
 
       .cards {
@@ -266,3 +268,4 @@
           background-color: rgba(139, 107, 244, 0.308);
          
        }
+      

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random color</title>
+</head>
+
+<body>
+
+    <style>
+        .con,
+        .con2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 10px;
+        }
+
+        .box,
+        .box1 {
+            width: 70px;
+            height: 70px;
+            border: 2px solid black;
+        }
+    </style>
+    <div class="con">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+    <div class="con2">
+        <div class="box1"></div>
+        <div class="box1"></div>
+        <div class="box1"></div>
+        <div class="box1"></div>
+        <div class="box1"></div>
+    </div>
+
+    <script>
+
+        function randcolor() {
+            let c1 = Math.ceil(255 * Math.random())
+            let c2 = Math.ceil(255 * Math.random())
+            let c3 = Math.ceil(255 * Math.random())
+
+            return `rgb(${c1}, ${c2}, ${c3})`
+        }
+
+
+        function greencolor() {
+            let c1 = 0
+            let c2 = Math.ceil(255 * Math.random())
+            let c3 = 0
+
+            return `rgb(${c1}, ${c2}, ${c3})`
+        }
+        console.log("it is color code-", randcolor())
+
+
+        for (let i = 0; i < 5; i++) {
+            document.getElementsByClassName("box")[i].style.backgroundColor = randcolor();
+            document.getElementsByClassName("box1")[i].style.backgroundColor = greencolor();
+        }
+
+    </script>
+</body>
+
+</html>

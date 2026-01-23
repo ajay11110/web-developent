@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .con {
+            width: 100vw;
+            height: 200px;
+            background-color: green;
+            align-content: center;
+            justify-items: center;
+        }
+
+        .box {
+            width: 80vw;
+            height: 150px;
+            background-color: blue;
+            align-content: center;
+            justify-items: center;
+        }
+
+        .btn {
+            color: white;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con">
+        <div class="box">
+            <button class="btn" id="btn1">click me</button>
+
+        </div>
+    </div>
+
+    <script>
+
+        // on tapping the button the container and box both will also clicked so prevent it use .stopPropagation()
+        function clickfn1() {
+            alert("container clicked")
+
+        }
+        let click1 = document.querySelector(".con")
+        click1.addEventListener("click", clickfn1)
+
+        
+        function clickfn2(a) {
+            alert("box clicked")
+            a.stopPropagation()
+
+        }
+        let click2 = document.querySelector(".box")
+        click2.addEventListener("click", clickfn2)
+
+        let click3 = document.querySelector(".btn")
+        click3.addEventListener("click", (e) => {
+            e.stopPropagation()
+            alert("button clicked")
+        })
+    </script>
+</body>
+
+</html>

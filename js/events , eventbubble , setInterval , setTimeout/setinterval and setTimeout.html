@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .con {
+            width: 100vw;
+            height: 200px;
+            background-color: red;
+            align-content: center;
+            justify-items: center;
+            margin: 10px;
+        }
+
+        .box, .box2 {
+            width: 80vw;
+            height: 150px;
+            background-color: blue;
+            align-content: center;
+            justify-items: center;
+        }
+
+        #btn,
+        .btn {
+            color: white;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con">
+        <div class="box">
+            <button class="btn" id="btn1">click me</button>
+
+        </div>
+    </div>
+
+    <div class="con">
+        <div class="box2">
+            <button class="btn" id="btn1">click me</button>
+
+        </div>
+    </div>
+
+    <script>
+
+        // on giving () to any function it means run now 
+        // it is not passing for example 
+        // setTimeout(fn(), 6000) it will run immediatly instead of 6 sec later
+        // to make it working pass like
+        // setTimeout(fn, 6000)
+        // or
+        // setTimeout(()=>fn(argument),6000)
+
+
+        let i = 0;
+        function green() {
+            i += 10;
+            if (i == 250) {
+                i = 0;
+            }
+            document.querySelector(".box").style.backgroundColor = `rgb(0, ${i} ,0)`
+        }
+
+        setInterval(green,1000);
+
+        setTimeout(() => {
+            document.querySelector(".box2").style.backgroundColor = "aqua"
+        }, 3000);
+    </script>
+</body>
+
+</html>

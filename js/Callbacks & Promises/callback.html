@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+
+    hello
+
+    <script>
+        function fn1(callback) {
+            console.log("fn1 started");
+
+            setTimeout(() => {
+                callback();          // fn2 runs after 2 sec
+            }, 2000);
+        }
+
+        function fn2() {
+            console.log("fn2 executed after 3 seconds");
+        }
+
+        fn1(fn2);
+
+        // if fn3 will wait for fn4 to run then -
+        function fn4(callback) {
+            setTimeout(() => {
+                console.log("fn4 executed after 3 seconds");
+                callback();
+            }, 3000);
+        }
+
+
+        function fn3() {
+            console.log("fn3 executed after fn4");
+        }
+
+        fn4(fn3);
+
+    </script>
+</body>
+
+</html>

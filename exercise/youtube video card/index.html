@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ytvideo created</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .con {
+            background-color: black;
+            width: 100vw;
+            height: 100vh;
+            color: white;
+            padding-bottom: 10px;
+            margin: 0;
+        }
+
+        .card {
+            width: auto;
+            height: 100px;
+            border: 2px solid aqua;
+            display: grid;
+            grid-template-columns: 190px auto;
+            grid-template-rows: 70px 30px;
+            position: relative;
+            border-radius: 10px;
+            background-color: rgb(39, 39, 39);
+            top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .image {
+            grid-column: 1/2;
+        }
+
+        .time {
+            grid-column: 1/2;
+            position: absolute;
+            bottom: 2px;
+            left: 130px;
+            background-color: rgba(0, 0, 0, 0.759);
+            font-weight: bold;
+            border: 0px solid rgb(0, 0, 0);
+            border-radius: 6px;
+            padding: 2px;
+        }
+
+        .tittle {
+            grid-column: 2/3;
+            grid-row: 1/2;
+            font-size: 25px;
+            font-weight: bolder;
+        }
+
+        .last {
+            display: flex;
+            grid-row: 2/3;
+            grid-column: 2/3;
+            gap: 4px;
+            color: grey;
+        }
+
+        img {
+            height: 100px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con">
+        <div class="card">
+            <div class="image"><img
+                    src="https://i.ytimg.com/vi/tVzUXW6siu0/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLACwWOixJVrKLFindK92kYMgTcQbw"
+                    alt="image"> </div>
+            <div class="time">12:32</div>
+            <div class="tittle">JavaScript Exercise 13 - Dynamic Website Builder </div>
+            <div class="last">
+                <div class="channel">channel name</div>
+                <div class="dot">.</div>
+                <div class="views">count</div>
+                <div class="dot">.</div>
+                <div class="posted">posted</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let tittle = prompt("enter tittle")
+        let image = prompt("enter image url")
+        let lenth = prompt("enter video duration")
+        let channel = prompt("enter channel name")
+        let view = prompt("enter number of views")
+        let posted = prompt("enter date of post")
+        let views = view;
+
+        if (view >= 1000 && view < 1000000) {
+            views = (view / 1000).toFixed(1) + "K";
+        }
+
+        if (view >= 1000000) {
+            views = (view / 1000000).toFixed(1) + "M";
+        }
+
+        function chdetails(tittle, image, lenth, channel, views, posted) {
+            document.getElementsByClassName("tittle")[0].innerHTML = tittle
+             document.querySelector(".image img").src = image;
+            document.getElementsByClassName("time")[0].innerHTML = lenth
+            document.getElementsByClassName("channel")[0].innerHTML = channel
+            document.getElementsByClassName("posted")[0].innerHTML = posted
+            document.getElementsByClassName("views")[0].innerHTML = views
+        }
+
+        chdetails(tittle, image, lenth, channel, views, posted);
+
+    </script>
+</body>
+
+</html>

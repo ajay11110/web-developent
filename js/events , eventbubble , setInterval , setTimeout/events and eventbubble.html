@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .con {
+            width: 100vw;
+            height: 200px;
+            background-color: green;
+            align-content: center;
+            justify-items: center;
+        }
+
+        .box {
+            width: 80vw;
+            height: 150px;
+            background-color: blue;
+            align-content: center;
+            justify-items: center;
+        }
+
+        #btn,
+        .btn {
+            color: white;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+   
+    <div class="con">
+        <div class="box">
+            <button class="btn" id="btn1">click me</button>
+            <button class="btn" id="btn">click</button>
+            <button class="btn" id="btn2">double click</button>
+            <button class="btn" id="btn3">aux click</button>
+            <button class="btn" id="btn4">contextmenu</button>
+            <button class="btn" id="btn5">click me</button>
+            <button class="btn" id="btn6">click me</button>
+            <button class="btn" id="btn7">click me</button>
+            <button class="btn" id="btn8">click me</button>
+        </div>
+    </div>
+
+    <script>
+
+        function button() {
+            // document.getElementById("btn").style.backgroundColor="red";
+            alert("ho gya button click!!!!")
+        }
+        let i = 0;
+        function green() {
+
+            i += 10;
+            if (i == 250) {
+                i = 0;
+            }
+            document.getElementById("btn1").style.backgroundColor = `rgb(0, ${i}, 0)`
+        }
+
+        // document.getElementById("btn").addEventListener("click",button)
+        // or
+        let click = document.getElementById("btn")
+        click.addEventListener("click", button)
+
+        let click1 = document.getElementById("btn1")
+        click1.addEventListener("click", green)
+
+        function button2() {
+            alert("ho gya  double button click!!!!")
+        }
+        let click2 = document.getElementById("btn2")
+        click2.addEventListener("dblclick", button2)
+
+        function button3() {
+            alert("ho gya  aux click!!!!")
+        }
+        let click3 = document.getElementById("btn3")
+        click3.addEventListener("auxclick", button3)
+
+        // function button4() {
+        //     event.preventDefault(); // stops browser menu
+        //     alert("ho gya  contextmenu!!!!")
+        // }
+        // let click4 = document.getElementById("btn4")
+        // click4.addEventListener("contextmenu", button4)
+
+        //not working
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>promises</title>
+</head>
+
+<body>
+  hello
+
+  <script>
+
+    let a = Math.ceil(Math.random() * 5)
+
+    let pr1 = new Promise((resolve, reject) => {
+
+      if (a >= 5) {
+        reject("rejected due to different value of a ")
+      }
+
+      else {
+        resolve("it is resolved")
+
+      }
+
+    })
+
+    // for more info about these function status-
+
+    pr1.then(result => {
+      console.log(result);
+
+    }).catch(error => {
+      console.log(error);
+
+    })
+
+    // real use - to solve the problem of complexity to callback
+ 
+  // --- Define tasks ---
+  function task1() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log("task 1 done");
+        resolve("data from task 1");
+      }, 1000);
+    });
+  }
+
+  function task2() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log("task 2 done");
+        resolve("data from task 2");
+      }, 1000);
+    });
+  }
+
+  function task3() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log("task 3 done");
+        resolve("data from task 3");
+      }, 1000);
+    });
+  }
+
+  function task4() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log("task 4 done");
+        resolve("data from task 4");
+      }, 1000);
+    });
+  }
+
+  function task5() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log("task 5 done");
+        resolve("data from task 5");
+      }, 1000);
+    });
+  }
+
+  task1()
+    .then(() => task2())
+    .then(() => task3())
+    .then(() => task4())
+    .then(() => task5())
+    .then(() => {
+      console.log("All 5 tasks completed in sequence");
+    });
+
+  // --- Step 2: Promise.all for first 3 tasks in parallel ---
+  Promise.all([task1(), task2(), task3()])
+    .then(results => {
+      console.log("Promise.all results:", results);
+      console.log("Tasks 1, 2, 3 completed in parallel");
+    });
+    
+</script>
+
+
+</body>
+
+</html>

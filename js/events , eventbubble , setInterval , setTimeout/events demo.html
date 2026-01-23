@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Demo</title>
+    <style>
+        .con {
+            width: 100vw;
+            min-height: 100vh;
+            background-color: green;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .btn {
+            color: white;
+            background-color: black;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="list">
+        <!-- events , eventbubble , setInterval , setTimeoutKeyboard events
+keydown
+Fired when a key is pressed.
+
+keypress Deprecated
+Fired when a key that produces a character value is pressed down.
+
+keyup
+Fired when a key is released.
+
+Mouse events
+auxclick
+Fired when a non-primary pointing device button (e.g., any mouse button other than the left button) has been pressed and released on an element.
+
+click
+Fired when a pointing device button (e.g., a mouse's primary button) is pressed and released on a single element.
+
+contextmenu
+Fired when the user attempts to open a context menu.
+
+dblclick
+Fired when a pointing device button (e.g., a mouse's primary button) is clicked twice on a single element.
+
+DOMActivate Deprecated
+Occurs when an element is activated, for instance, through a mouse click or a keypress.
+
+DOMMouseScroll Deprecated Non-standard
+Occurs when mouse wheel or similar device is operated and the accumulated scroll amount is over 1 line or 1 page since last event.
+
+mousedown
+Fired when a pointing device button is pressed on an element.
+
+mouseenter
+Fired when a pointing device (usually a mouse) is moved over the element that has the listener attached.
+
+mouseleave
+Fired when the pointer of a pointing device (usually a mouse) is moved out of an element that has the listener attached to it.
+
+mousemove
+Fired when a pointing device (usually a mouse) is moved while over an element.
+
+mouseout
+Fired when a pointing device (usually a mouse) is moved off the element to which the listener is attached or off one of its children.
+
+mouseover
+Fired when a pointing device is moved onto the element to which the listener is attached or onto one of its children.
+
+mouseup
+Fired when a pointing device button is released on an element.
+
+mousewheel Deprecated Non-standard
+Fired when a mouse wheel or similar device is operated.
+
+MozMousePixelScroll Deprecated Non-standard
+Fired when a mouse wheel or similar device is operated.
+
+webkitmouseforcechanged Non-standard
+Fired each time the amount of pressure changes on the trackpad touch screen.
+
+webkitmouseforcedown Non-standard
+Fired after the mousedown event as soon as sufficient pressure has been applied to qualify as a "force click".
+
+webkitmouseforcewillbegin Non-standard
+Fired before the mousedown event.
+
+webkitmouseforceup Non-standard
+Fired after the webkitmouseforcedown event as soon as the pressure has been reduced sufficiently to end the "force click".
+
+Pointer events
+gotpointercapture
+Fired when an element captures a pointer using setPointerCapture().
+
+lostpointercapture
+Fired when a captured pointer is released.
+
+pointercancel
+Fired when a pointer event is canceled.
+
+pointerdown
+Fired when a pointer becomes active.
+
+pointerenter
+Fired when a pointer is moved into the hit test boundaries of an element or one of its descendants.
+
+pointerleave
+Fired when a pointer is moved out of the hit test boundaries of an element.
+
+pointermove
+Fired when a pointer changes coordinates.
+
+pointerout
+Fired when a pointer is moved out of the hit test boundaries of an element (among other reasons).
+
+pointerover
+Fired when a pointer is moved into an element's hit test boundaries.
+
+pointerrawupdate
+Fired when a pointer changes any properties that don't fire pointerdown or pointerup events.
+
+pointerup
+Fired when a pointer is no longer active.
+
+Scroll events
+scroll
+Fired when the document view or an element has been scrolled.
+
+scrollend
+Fires when the document view has completed scrolling.
+
+scrollsnapchange Experimental
+Fired on the scroll container at the end of a scrolling operation when a new scroll snap target has been selected.
+
+scrollsnapchanging Experimental
+Fired on the scroll container when the browser determines a new scroll snap target is pending, i.e., it will be selected when the current scroll gesture ends.
+
+Touch events
+gesturechange Non-standard
+Fired when digits move during a touch gesture.
+
+gestureend Non-standard
+Fired when there are no longer multiple fingers contacting the touch surface, thus ending the gesture.
+
+gesturestart Non-standard
+Fired when multiple fingers contact the touch surface, thus starting a new gesture.
+
+touchcancel
+Fired when one or more touch points have been disrupted in an implementation-specific manner (for example, too many touch points are created).
+
+touchend
+Fired when one or more touch points are removed from the touch surface.
+
+touchmove
+Fired when one or more touch points are moved along the touch surface.
+
+touchstart
+Fired when one or more touch points are placed on the touch surface.
+
+    </div>
+    <div class="con">
+        <!-- Mouse events -->
+        <button class="btn" id="btnClick">Click</button>
+        <button class="btn" id="btnDblClick">Double Click</button>
+        <button class="btn" id="btnAuxClick">Aux Click (middle/right)</button>
+        <button class="btn" id="btnContext">Context Menu</button>
+        <button class="btn" id="btnMouseDown">Mouse Down</button>
+        <button class="btn" id="btnMouseUp">Mouse Up</button>
+        <button class="btn" id="btnMouseEnter">Mouse Enter</button>
+        <button class="btn" id="btnMouseLeave">Mouse Leave</button>
+        <button class="btn" id="btnMouseMove">Mouse Move</button>
+        <button class="btn" id="btnMouseOver">Mouse Over</button>
+        <button class="btn" id="btnMouseOut">Mouse Out</button>
+
+        <!-- Keyboard events -->
+        <button class="btn" id="btnKeyDown">Key Down (press any key)</button>
+        <button class="btn" id="btnKeyUp">Key Up (release key)</button>
+
+        <!-- Pointer events -->
+        <button class="btn" id="btnPointerDown">Pointer Down</button>
+        <button class="btn" id="btnPointerUp">Pointer Up</button>
+        <button class="btn" id="btnPointerMove">Pointer Move</button>
+        <button class="btn" id="btnPointerEnter">Pointer Enter</button>
+        <button class="btn" id="btnPointerLeave">Pointer Leave</button>
+
+        <!-- Scroll events -->
+        <div id="scrollBox" style="width:200px;height:100px;overflow:auto;background:#222;color:white;padding:10px;">
+            Scroll inside me<br><br><br><br><br><br><br><br>End
+        </div>
+
+        <!-- Touch events (mobile only) -->
+        <button class="btn" id="btnTouchStart">Touch Start</button>
+        <button class="btn" id="btnTouchMove">Touch Move</button>
+        <button class="btn" id="btnTouchEnd">Touch End</button>
+        <button class="btn" id="btnTouchCancel">Touch Cancel</button>
+    </div>
+
+    <script>
+        // Mouse events
+        document.getElementById("btnClick").addEventListener("click", () => {
+            alert("Click event: Fires when primary mouse button is pressed and released.");
+        });
+        document.getElementById("btnDblClick").addEventListener("dblclick", () => {
+            alert("Double Click event: Fires when the primary mouse button is clicked twice quickly.");
+        });
+        document.getElementById("btnAuxClick").addEventListener("auxclick", () => {
+            alert("Aux Click event: Fires when a non-primary mouse button (middle/right) is clicked.");
+        });
+        document.getElementById("btnContext").addEventListener("contextmenu", (e) => {
+            e.preventDefault();
+            alert("Context Menu event: Fires when right-click is attempted.");
+        });
+        document.getElementById("btnMouseDown").addEventListener("mousedown", () => {
+            alert("Mouse Down event: Fires when mouse button is pressed down.");
+        });
+        document.getElementById("btnMouseUp").addEventListener("mouseup", () => {
+            alert("Mouse Up event: Fires when mouse button is released.");
+        });
+        document.getElementById("btnMouseEnter").addEventListener("mouseenter", () => {
+            alert("Mouse Enter event: Fires when pointer enters the element.");
+        });
+        document.getElementById("btnMouseLeave").addEventListener("mouseleave", () => {
+            alert("Mouse Leave event: Fires when pointer leaves the element.");
+        });
+        document.getElementById("btnMouseMove").addEventListener("mousemove", () => {
+            alert("Mouse Move event: Fires when pointer moves inside the element.");
+        });
+        document.getElementById("btnMouseOver").addEventListener("mouseover", () => {
+            alert("Mouse Over event: Fires when pointer enters element or its children.");
+        });
+        document.getElementById("btnMouseOut").addEventListener("mouseout", () => {
+            alert("Mouse Out event: Fires when pointer leaves element or its children.");
+        });
+
+        // Keyboard events (attached to document)
+        document.getElementById("btnKeyDown").addEventListener("click", () => {
+            alert("Press any key now: Key Down fires when a key is pressed.");
+        });
+        document.addEventListener("keydown", () => {
+            console.log("Key Down triggered");
+        });
+        document.getElementById("btnKeyUp").addEventListener("click", () => {
+            alert("Release any key now: Key Up fires when a key is released.");
+        });
+        document.addEventListener("keyup", () => {
+            console.log("Key Up triggered");
+        });
+
+        // Pointer events
+        document.getElementById("btnPointerDown").addEventListener("pointerdown", () => {
+            alert("Pointer Down event: Fires when pointer (mouse, pen, touch) becomes active.");
+        });
+        document.getElementById("btnPointerUp").addEventListener("pointerup", () => {
+            alert("Pointer Up event: Fires when pointer is no longer active.");
+        });
+        document.getElementById("btnPointerMove").addEventListener("pointermove", () => {
+            alert("Pointer Move event: Fires when pointer changes coordinates.");
+        });
+        document.getElementById("btnPointerEnter").addEventListener("pointerenter", () => {
+            alert("Pointer Enter event: Fires when pointer enters element boundaries.");
+        });
+        document.getElementById("btnPointerLeave").addEventListener("pointerleave", () => {
+            alert("Pointer Leave event: Fires when pointer leaves element boundaries.");
+        });
+
+        // Scroll events
+        const scrollBox = document.getElementById("scrollBox");
+        scrollBox.addEventListener("scroll", () => {
+            console.log("Scroll event: Fires while scrolling.");
+        });
+
+        // Touch events (mobile only)
+        document.getElementById("btnTouchStart").addEventListener("touchstart", () => {
+            alert("Touch Start event: Fires when finger touches the screen.");
+        });
+        document.getElementById("btnTouchMove").addEventListener("touchmove", () => {
+            alert("Touch Move event: Fires when finger moves on the screen.");
+        });
+        document.getElementById("btnTouchEnd").addEventListener("touchend", () => {
+            alert("Touch End event: Fires when finger is lifted off the screen.");
+        });
+        document.getElementById("btnTouchCancel").addEventListener("touchcancel", () => {
+            alert("Touch Cancel event: Fires when touch is disrupted (too many touches, etc.).");
+        });
+    </script>
+</body>
+
+</html>
