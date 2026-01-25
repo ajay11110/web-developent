@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacking Terminal</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .con {
+            height: 100vh;
+            width: 100vw;
+            background-color: black;
+            padding: 0px;
+            margin: 0;
+        }
+
+        .text {
+            color: green;
+            font-size: 20px;
+            padding-left: 10px;
+            padding-top: 10px;
+        }
+
+        .dot,
+        .dot1,
+        .dot2,
+        .dot3 {
+            color: green;
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="con">
+        <div> <span class="text"> </span>
+            <span class="dot1"></span>
+            <span class="dot2"></span>
+            <span class="dot3"></span>
+        </div>
+        <div> <span class="text"></span>
+            <span class="dot1"></span>
+            <span class="dot2"></span>
+            <span class="dot3"></span>
+        </div>
+        <div> <span class="text"></span>
+            <span class="dot1"></span>
+            <span class="dot2"></span>
+            <span class="dot3"></span>
+        </div>
+        <div> <span class="text"></span>
+            <span class="dot1"></span>
+            <span class="dot2"></span>
+            <span class="dot3"></span>
+        </div>
+        <div> <span class="text"></span>
+            <span class="dot1"></span>
+            <span class="dot2"></span>
+            <span class="dot3"></span>
+        </div>
+        <div> <span class="text"></span>
+            <span class="dot1"></span>
+            <span class="dot2"></span>
+            <span class="dot3"></span>
+        </div>
+    </div>
+
+    <script>
+        function fn7() {
+            let time = Math.ceil(Math.random() * 4000);
+            return time
+        }
+
+        async function fn1() {
+            return new Promise((resolve) => {
+
+                setTimeout(() => {
+                    document.getElementsByClassName("text")[0].innerHTML = "Initialising Hacking"
+
+                    resolve();
+                }, fn7())
+            })
+        }
+
+        async function fn2() {
+            await fn1();
+            await dot(0);
+            return new Promise((resolve) => {
+
+                setTimeout(() => {
+                    document.getElementsByClassName("text")[1].innerHTML = "Reading Files"
+                    dot(1)
+                    resolve();
+                }, fn7())
+            })
+        }
+
+        async function fn3() {
+            await fn2();
+            await dot(1);
+            return new Promise((resolve) => {
+
+                setTimeout(() => {
+                    document.getElementsByClassName("text")[2].innerHTML = "Data fetched"
+                    resolve();
+                }, fn7())
+            })
+        }
+
+        async function fn4() {
+            await fn3();
+            await dot(2);
+            return new Promise((resolve) => {
+
+                setTimeout(() => {
+                    document.getElementsByClassName("text")[3].innerHTML = "Password Files Detected"
+
+                    resolve();
+                }, fn7())
+            })
+        }
+
+        async function fn5() {
+            await fn4();
+            await dot(3);
+            return new Promise((resolve) => {
+
+                setTimeout(() => {
+                    document.getElementsByClassName("text")[4].innerHTML = "Sending Data to Server"
+
+                    resolve();
+                }, fn7())
+            })
+        }
+
+        async function fn6() {
+            await fn5();
+            await dot(4);
+            await dot(5);
+            return new Promise((resolve) => {
+
+                setTimeout(() => {
+                    document.getElementsByClassName("text")[5].innerHTML = "Cleaning Up"
+
+                    resolve();
+                }, fn7())
+            })
+        }
+        fn6()
+
+        function dot(i) {
+            setTimeout(() => {
+                document.getElementsByClassName("dot1")[i].innerHTML = "."
+                document.getElementsByClassName("dot1")[i].innerHTML = ".."
+                document.getElementsByClassName("dot1")[i].innerHTML = "..."
+            }, fn7())
+        }
+    </script>
+</body>
+
+</html>

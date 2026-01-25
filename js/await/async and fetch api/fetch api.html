@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fetch api</title>
+</head>
+<body>
+hello
+<script>
+    async function data() {
+       let x=await fetch('https://jsonplaceholder.typicode.com/todos/1')
+       let d=await x.json()
+        console.log(d);
+       // or for text instead of json
+    //    let e=await x.text()
+    //   console.log(e);
+
+      //need 2 await 1 for fetch data second for print data
+    }
+
+    data();
+
+     async function data2() {
+       let x=await fetch('https://jsonplaceholder.typicode.com/todos/1')
+       let d= await x.json()
+        return d
+    }
+
+    async function returned() {
+        let i= await data2();
+        console.log(i)
+    }
+ returned();
+</script>
+</body>
+</html>

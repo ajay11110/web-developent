@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart price</title>
+</head>
+
+<body>
+    <button class="item">laptop-50,000</button>
+    <button class="item">mouse-300</button>
+    <button class="item">keybord-900</button>
+    <button class="item">charger-2,000</button>
+    <button class="item">mobile-25,000</button>
+    <button class="item">ear-buds-2,000</button>
+    <div id="total"></div>
+
+    <script>
+        let cart = 0
+        document.getElementById("total").innerHTML = cart
+        let item = document.getElementsByClassName("item")
+
+        item[0].addEventListener("click", () => {
+            cart += 50000
+            document.getElementById("total").innerHTML = cart
+        })
+
+        item[1].addEventListener("click", () => {
+            cart += 300
+            document.getElementById("total").innerHTML = cart
+        })
+
+        item[2].addEventListener("click", () => {
+            cart += 900
+            document.getElementById("total").innerHTML = cart
+        })
+        item[3].addEventListener("click", () => {
+            cart += 2000
+            document.getElementById("total").innerHTML = cart
+        })
+
+        item[4].addEventListener("click", () => {
+            cart += 25000
+            document.getElementById("total").innerHTML = cart
+        })
+
+        item[5].addEventListener("click", () => {
+            cart += 2000
+            document.getElementById("total").innerHTML = cart
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>await/async</title>
+</head>
+<body>
+  hello
+
+  <script>
+    async function getinfo() {
+      return new Promise((resolve, reject) => {
+          setTimeout(() => {
+          let x=2000;
+          console.log("x returned");
+          
+           resolve(x)
+        }, 2000)
+      })
+    }
+
+    async function fn2() {
+        console.log("fn2 is here");
+        
+        let i=await getinfo()
+
+        console.log("after this will come");
+        
+    }
+    fn2()
+    
+  </script>
+</body>
+</html>
