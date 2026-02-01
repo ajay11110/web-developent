@@ -1,0 +1,7 @@
+to check the actual functionality first of all
+
+install nmp express in test folder
+and then
+run command in the same test folder - node server.js
+   
+because to read and fetch songs dynamically from folder it is necessary to run song folder to localhost
