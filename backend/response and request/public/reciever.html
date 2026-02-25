@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>post reciever</title>
+</head>
+
+<body>
+    hello post
+
+    <script>
+        async function postreciever() {
+            let a = await fetch("/", { method: "POST" })
+            let c = await a.text()
+            console.log(c)
+        }
+
+         postreciever();
+
+    </script>
+</body>
+
+</html>
