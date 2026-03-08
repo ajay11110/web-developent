@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data generator</title>
+
+    <style>
+        * {
+            background-color: black;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50vh;
+            ;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn">
+        <button id="btn">Generate Data</button>
+    </div>
+    <script>
+        document.getElementById("btn").addEventListener("click", async () => {
+            for (let i = 0; i < 10; i++) {
+
+                window.location.href = "http://127.0.0.1:3000"
+                // window.open("http://localhost:3000", "_blank");
+            }
+        })
+
+    </script>
+</body>
+
+</html>
