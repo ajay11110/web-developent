@@ -1,0 +1,67 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.bg {
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    height: 160px;
+    width: 350px;
+    background-color: rgba(84, 84, 84, 0.509);
+    border: 0px solid black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.border {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    font-size: 62px;
+    font-weight: bolder;
+    border: 3px solid rgb(0, 256, 0);
+    padding: 18px;
+    border-radius: 10px;
+}
+
+.hour {
+    color: rgb(9, 255, 0);
+}
+
+.second {
+    color: red;
+    font-size: 42px;
+    padding-top: 10px;
+}
+
+.ampm {
+    font-size: 32px;
+    padding-top: 10px;
+    margin-left: 10px;
+}
+
+.colon {
+    animation: blink 1s infinite ;
+}
+
+@keyframes blink {
+0% , 50% {
+    color: white;
+}
+
+51% , 100% {
+    color: rgba(255, 255, 255, 0);
+}
+}

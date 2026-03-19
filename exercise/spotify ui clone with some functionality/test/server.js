@@ -53,39 +53,64 @@ app.get("/api/songs/:library", (req, res) => {
     });
 });
 
-// Manual ultra-minimal directory listing at ROOT (NO CSS, NO HTML boilerplate)
+// Manual directory listing / file server at ROOT
 app.get("*", (req, res) => {
     const decodedPath = decodeURIComponent(req.path);
-    const subPath = decodedPath === "/" ? "" : decodedPath;
-    const targetPath = path.join(__dirname, "../spotify clone/data", subPath);
+    
+    // Normalize path and join with data directory
+    // We want to serve files from "../spotify clone/data"
+    const baseDataDir = path.resolve(__dirname, "../spotify clone/data");
+    const targetPath = path.join(baseDataDir, decodedPath);
+
+    console.log(`[REQUEST] Path: ${req.path} | Decoded: ${decodedPath}`);
+    console.log(`[RESOLVE] Target: ${targetPath}`);
+
+    // Basic security: Ensure the resolved path is within the data directory
+    if (!targetPath.startsWith(baseDataDir)) {
+        console.warn(`[SECURITY] Attempted access outside data dir: ${targetPath}`);
+        return res.status(403).send("Forbidden");
+    }
 
     fs.stat(targetPath, (err, stats) => {
-        if (err) return res.status(404).send("Not Found");
+        if (err) {
+            console.error(`[ERROR] fs.stat failed for ${targetPath}:`, err.message);
+            return res.status(404).send("Not Found");
+        }
 
         if (stats.isFile()) {
+            console.log(`[SERVE] File: ${targetPath}`);
             return res.sendFile(targetPath);
         }
 
-        fs.readdir(targetPath, { withFileTypes: true }, (err, entries) => {
-            if (err) return res.status(500).send("Error reading directory");
+        if (stats.isDirectory()) {
+            fs.readdir(targetPath, { withFileTypes: true }, (err, entries) => {
+                if (err) {
+                    console.error(`[ERROR] fs.readdir failed for ${targetPath}:`, err.message);
+                    return res.status(500).send("Error reading directory");
+                }
 
-            res.set("Content-Type", "text/html");
-            let html = `<b>Index of ${req.path}</b><br><br>\n`;
+                console.log(`[LIST] Directory: ${targetPath} (${entries.length} items)`);
 
-            if (req.path !== "/") {
-                const parentPath = path.dirname(req.path);
-                const parentLink = parentPath === "\\" || parentPath === "." ? "/" : parentPath;
-                html += `<a href="${parentLink}">.. (Up one level)</a><br>\n`;
-            }
+                res.set("Content-Type", "text/html");
+                let html = `<b>Index of ${decodedPath}</b><br><br>\n`;
 
-            entries.forEach(entry => {
-                const name = entry.name;
-                const link = path.join(req.path, name).replace(/\\/g, "/");
-                html += `<a href="${link}">${name}${entry.isDirectory() ? "/" : ""}</a><br>\n`;
+                if (decodedPath !== "/" && decodedPath !== "") {
+                    const parentPath = path.dirname(decodedPath).replace(/\\/g, "/");
+                    const parentLink = parentPath === "." ? "/" : parentPath;
+                    html += `<a href="${parentLink}">.. (Up one level)</a><br>\n`;
+                }
+
+                entries.forEach(entry => {
+                    const name = entry.name;
+                    // Ensure the link is properly formatted for the browser
+                    const linkPrefix = decodedPath.endsWith("/") ? decodedPath : decodedPath + "/";
+                    const link = (linkPrefix + name).replace(/\/+/g, "/"); 
+                    html += `<a href="${link}">${name}${entry.isDirectory() ? "/" : ""}</a><br>\n`;
+                });
+
+                res.send(html);
             });
-
-            res.send(html);
-        });
+        }
     });
 });
 

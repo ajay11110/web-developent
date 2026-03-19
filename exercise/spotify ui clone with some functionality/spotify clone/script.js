@@ -131,7 +131,7 @@ async function fetchMp3Files() {
 
     const playMusic = (track, pause = false) => {
         // Use the same server URL as the fetch for consistency
-        const songServerBase = "http://127.0.0.1:3000/My Songs/";
+        const songServerBase = "http://127.0.0.1:3001/My Songs/";
         currentSong.src = songServerBase + encodeURIComponent(track);
 
         currSongIndex = songnames.indexOf(track);
@@ -139,7 +139,7 @@ async function fetchMp3Files() {
         if (!pause) {
             currentSong.play().catch(error => {
                 console.error("Playback failed:", error);
-                // If the server on 3000 failed, try the local path as a fallback
+                // If the server on 3001 failed, try the local path as a fallback
                 currentSong.src = "/data/My Songs/" + track;
                 currentSong.play().catch(err => console.error("Fallback failed too:", err));
             });
