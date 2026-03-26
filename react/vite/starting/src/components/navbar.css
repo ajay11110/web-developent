@@ -1,0 +1,15 @@
+.nav {
+    background-color: black;
+    color: white;
+}
+
+.ul {
+    display: flex;
+    gap: 10px;
+    text-transform: none;
+    justify-content: end;
+}
+
+li {
+    padding: 10px;
+}
