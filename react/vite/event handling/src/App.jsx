@@ -30,8 +30,8 @@ function App() {
       {/* input have a different type in it */}
       <div className="input">
         <input type="text" value={name} onChange={handlechange} />
-        <input type="email" name='email' value={form.email} on onChange={handlechange2} />
-        <input type="text" name='phone' value={form.phone} on onChange={handlechange2} />
+        <input type="email" name='email' value={form.email} onChange={handlechange2} />
+        <input type="text" name='phone' value={form.phone} onChange={handlechange2} />
       </div>
     </>
   )
