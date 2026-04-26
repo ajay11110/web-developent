@@ -73,9 +73,10 @@ function App() {
       let temp = (decimal * 10) + Number(val)
       let len = temp.toString().length
       let temp2 = number1 + (temp) / (10 ** (len))
+      let temp3 = number1 + (val) / (10 ** (len))
       setdecimal(temp)
-      setdisplay(temp2)
-      setnumber1(temp2)
+      setnumber1(temp3)
+      setdisplay(temp3)
     }
 
     else {
@@ -92,12 +93,11 @@ function App() {
 
       let temp = (decimal * 10) + Number(val)
       let len = temp.toString().length
-
       let temp2 = number2 + (temp) / (10 ** (len))
+      let temp3 = number2 + (val) / (10 ** (len))
       setdecimal(temp)
-      setdisplay(temp2)
-      setnumber2(temp2)
-
+      setnumber2(temp3)
+      setdisplay(temp3)
     }
 
     else {
@@ -143,20 +143,37 @@ function App() {
     setnumber1(0)
     setnumber2(0)
     setoperation(0)
+    setdecimal(0)
+    setpoint(0)
   }
 
   function del() {
 
-    if (operation == 0) {
-      let temp = Math.floor(number1 / 10)
-      setnumber1(temp)
-      setdisplay(temp)
+    if (display == 0) {
+      clear()
     }
 
     else {
-      let temp = Math.floor(number2 / 10)
-      setnumber2(temp)
-      setdisplay(temp)
+      if (point === true) {
+        setdecimal(Number(decimal.toString().slice(0, -1)))
+      }
+
+
+      if (operation == 0) {
+        let temp = number1.toString()
+        let tempstring = temp.slice(0, -1)
+        console.log(tempstring);
+        setnumber1(Number(tempstring))
+        setdisplay(Number(tempstring))
+      }
+
+      else {
+        let temp = number2.toString()
+        let tempstring = temp.slice(0, -1)
+        console.log(tempstring);
+        setnumber2(Number(tempstring))
+        setdisplay(Number(tempstring))
+      }
     }
 
   }
@@ -167,16 +184,42 @@ function App() {
 
 
   function doublezero() {
+    console.log("00 clicked");
+
+    if (point === true) {
+      setdecimal(Number(decimal.toString() + "00"))
+      let temp = Number(display.toString() + "00")
+      setdisplay(temp)
+      console.log(temp);
+      
+    }
+
+
     if (operation != 0) {
-      let temp = number2 * 100
+      // let temp = number2 * 100
+      // setnumber2(temp)
+      // setdisplay(temp)
+
+      let temp = Number(number2.toString().push("00"))
       setnumber2(temp)
       setdisplay(temp)
+
+
+      console.log(temp);
+
     }
 
     else {
-      let temp = number1 * 100
+      // let temp = number1 * 100
+      // setnumber1(temp)
+      // setdisplay(temp)
+
+      let temp = Number(number1.toString() + ("00"))
       setnumber1(temp)
       setdisplay(temp)
+
+      console.log(temp);
+
     }
   }
 
