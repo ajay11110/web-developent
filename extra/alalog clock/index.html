@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>alalog clock</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .start {
+      background-color: black;
+      padding: 0;
+      margin: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .con {
+      width: 300px;
+      height: 300px;
+      background-color: rgb(34, 34, 34);
+      border: 2px solid rgb(0, 255, 0);
+      border-radius: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .line1 {
+      width: 300px;
+      height: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .line2 {
+      width: 300px;
+      height: 5px;
+      transform: rotateZ(90deg);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .l1,
+    .l2 {
+      background-color: white;
+      width: 15px;
+      height: 5px;
+    }
+
+    .p1 {
+      background-color: red;
+      width: 15px;
+      height: 100px;
+      border-radius: 10px;
+    }
+
+    .p2 {
+      background-color: purple;
+      width: 10px;
+      height: 130px;
+      border-radius: 10px;
+    }
+
+    .p3 {
+      background-color: yellow;
+      width: 3px;
+      height: 145px;
+      border-radius: 10px;
+    }
+
+    .lines{
+      position: relative;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+    }
+
+    .bg{
+      /* position: relative; */
+    }
+
+    .hands{
+      position: relative;
+      z-index: 10;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="start">
+    <div class="con">
+      <div class="bg">
+        <div class="lines">
+          <div class="line1">
+            <div class="l1"></div>
+            <div class="l2"></div>
+          </div>
+          <div class="line2">
+            <div class="l1"></div>
+            <div class="l2"></div>
+          </div>
+          <div class="hands">
+              <div class="probes">
+
+          <div class="probe p1"></div>
+          <div class="probe p2"></div>
+          <div class="probe p3"></div>
+        </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
