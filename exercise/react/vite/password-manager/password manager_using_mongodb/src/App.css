@@ -1,0 +1,155 @@
+* {
+  padding: 0;
+  margin: 0;
+  background-color: rgb(20, 20, 20);
+  color: white;
+  font-size: 20px;
+}
+
+.brandname {
+  padding-top: 30px;
+  font-size: 70px;
+  color: white;
+  font-weight: 800;
+  /* background-color: rgb(17, 84, 17); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.desc {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  color: grey;
+}
+
+.main {
+  background-color: rgb(17, 30, 17);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
+  margin: 40px;
+  border-radius: 20px;
+  width: calc(100% - 80px);
+
+}
+
+.input {
+  border: 1px solid white;
+  height: 40px;
+  border-radius: 10px;
+  padding-left: 10px;
+  margin: 0 10px;
+  max-width: calc(100% - 40px)
+}
+
+.i1 {
+  margin: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.in1,
+.in2 {
+  /* width: 600px; */
+  /* width: min(600px, 100%); */
+  max-width: 100%;
+}
+
+.in3,
+.in4 {
+  width: 200px;
+}
+
+.downinput {
+  width: 600px;
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(17, 30, 17);
+
+}
+
+.newpassword {
+  padding: 5px 20px;
+  background-color: rgb(0, 255, 0);
+  margin: 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.newpassword:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid greenyellow;
+}
+
+.main2 {
+  background-color: rgb(17, 30, 17);
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+  margin: 40px;
+  border-radius: 20px;
+  padding-bottom: 10px;
+}
+
+.savedtext {
+  color: white;
+  font-weight: 800;
+  background-color: rgb(17, 30, 17);
+  font-size: 30px;
+  margin: 10px;
+}
+
+.sitecard {
+  background-color: rgb(51, 61, 51);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  padding: 3px;
+  border-radius: 10px;
+}
+
+.detailsinput {
+  width: 100%;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.editicon{
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.deleteicon{
+  background-color: transparent;
+}
+
+.wrapper{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin: 10px;
+  border-radius: 5px;
+  padding:0px 5px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.header{
+  background-color: rgb(3, 255, 3);
+}
+
+.htext {
+  background-color: transparent;
+  color: black;
+}
