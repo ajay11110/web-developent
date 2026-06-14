@@ -1,0 +1,69 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --display_options: none;
+    --final_color: rgb(0, 255, 0);
+}
+
+.main {
+    background-color: black;
+    width: 100vw;
+    height: 100Vh;
+    color: white;
+}
+
+.text {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.btns {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    width: 150px;
+    height: 50px;
+    border: none;
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    transition: all 0.2s linear;
+}
+
+
+.play {
+    background-color: rgb(0, 255, 0);
+    color: white;
+}
+
+
+.rock {
+    background-color: rgb(109, 109, 109);
+    color: white;
+}
+
+.scissors {
+    background-color: #fff;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.show {
+    display: var(--display_options);
+}
+
+.answer {
+    color: aqua;
+}
+
+.final_result {
+    font-size: 70px;
+    color: var(--final_color);
+}
