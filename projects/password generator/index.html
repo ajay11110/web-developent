@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="start">
+        <div class="heading"><span>Password Generator</span></div>
+
+        <div class="classbtncon">
+            <div class="classtext">Choose password method -</div>
+            <div class="classbtns">
+                <button class="classbtn custom">custom (recommanded)</button>
+                <button class="classbtn random">Random </button>
+            </div>
+        </div>
+        <div class="conditions">
+            <div>
+                <input type="checkbox" checked name="special_character" id="special_character">
+                <span class="condition">Include special character</span>
+            </div>
+            <div>
+                <input type="checkbox" checked name="small_character" id="small_character">
+                <span class="condition">Include small letters </span>
+            </div>
+            <div>
+                <input type="checkbox" checked name="numbers" id="numbers">
+                <span class="condition">Include numbers </span>
+            </div>
+
+        </div>
+        <div class="btn">
+            <button class="generate" id="gene">Generate Password</button>
+        </div>
+        <div class="resultcard">
+            <span class="showresult">Generated Password is - </span>
+            <span class="result"></span><button class="copy">copy</button>
+
+        </div>
+        <div class="strength">
+            <div class="strengthcard">
+                <span class="strengthText">strength - </span>
+                <span class="strenthResult"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
