@@ -1,0 +1,71 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.ipage{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.iimg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.iphoto{
+    height: 400px;
+}
+
+.ititle{
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.price{
+    color: brown;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.idescription{
+    font-size: 25px;
+    color: grey;
+}
+
+.ibtns{
+    display: flex;
+    justify-content: space-around;
+}
+
+.ibtn{
+    padding: 15px 50px;
+     border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 20px;
+}
+
+.ibuy{
+    background-color: rgb(0, 255, 0);
+}
+
+.iadd{
+    background-color: #ff8c00;
+}
+
+.iexdes{
+    font-size: 23px;
+}
+
+.iexploremoretitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bolder;
+    margin: 30px 0;
+}
