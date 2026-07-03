@@ -52,7 +52,7 @@ const Profile = () => {
                 </div>
 
                 <div className="lower">
-                    <button className="lbtn pointer editprofile">Edit Profile</button>
+                    <button onClick={() => { router.push("/editprofile") }} className="lbtn pointer editprofile">Edit Profile</button>
                     <button className="lbtn pointer logout">Logout</button>
                 </div>
             </div>

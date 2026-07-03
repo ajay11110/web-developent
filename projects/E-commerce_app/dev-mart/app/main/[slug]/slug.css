@@ -22,17 +22,20 @@
 .ititle{
     font-size: 40px;
     font-weight: bolder;
+    padding-left: 10px;
 }
 
-.price{
+.iprice{
     color: brown;
     font-size: 30px;
     font-weight: bold;
+    padding-left: 10px;
 }
 
 .idescription{
     font-size: 25px;
     color: grey;
+    padding-left: 15px;
 }
 
 .ibtns{
@@ -59,6 +62,7 @@
 
 .iexdes{
     font-size: 23px;
+    padding-left: 15px;
 }
 
 .iexploremoretitle{
