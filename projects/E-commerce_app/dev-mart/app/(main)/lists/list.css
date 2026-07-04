@@ -1,0 +1,62 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.title{
+    font-size: 25px;
+    font-weight: 700;
+    margin: 10px;
+}
+
+.labdata {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.lable{
+    display: flex;
+    flex-direction: column;
+    gap: 33px;
+    padding-left: 20px;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ltext {
+    font-size: 18px;
+    color: grey;
+}
+
+.dtext {
+    font-size: 18px;
+    font-weight: 600;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.btns{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.btn{
+    padding: 10px 40px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.savebtn{
+    background-color: aqua;
+}
+
+.discardbtn{
+    background-color: orange;
+}

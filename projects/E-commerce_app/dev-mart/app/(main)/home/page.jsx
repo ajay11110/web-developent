@@ -1,18 +1,69 @@
 "use client"
-import React from "react";
+
 import "./home.css"
 import Itemcard from "@/components/itemcard";
-import Link from "next/link";
+import Loading from "@/components/loading";
+import { app } from "../../firebase"
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Firestore, getDocs, doc, getFirestore, collection } from "firebase/firestore";
+
+const auth = getAuth(app)
+const firestore = getFirestore(app)
+
+const Home = () => {//====================================================
+
+    const [allproduct, setallproducts] = useState(null)
+
+    const router = useRouter()
+
+    const [islogin, setIsLogin] = useState(false);
+
+    useEffect(() => {
+        const stop = onAuthStateChanged(auth, user => {
+            if (user) {
+                setIsLogin(true)
+                readdata()
+            }
+
+            else {
+                console.log("user is not logged in")
+                router.replace("/auth")
+            }
 
 
-const Home = () => {
 
-    const product = {
-        slug: "iphone-16",
-        title: "iPhone 16"
-    };
+        }
+        )
 
-    return (
+        return () => { stop() }
+    }, [router])
+
+    const readdata = async () => {
+        const snapshot = await getDocs(collection(firestore, "products"))
+
+
+        const productList = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data()
+        }))
+
+        setallproducts(snapshot.docs)
+        console.log(snapshot.docs)
+        console.log(productList)
+    }
+
+
+    if (!islogin) {
+        return (
+            <>
+                <Loading />
+            </>
+        )
+    }
+
+    else return (
         <div className="start">
             <div className="searchbox">
                 <div className="sbox">
@@ -39,16 +90,7 @@ const Home = () => {
                             <div className="sectiontitle">Phones</div>
                             <div className="phonessec sec">
                                 <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-                                <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-                                <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-                                <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-                                <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-                                <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-                                <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-{/* 
-                                <Link href={`/${product.slug}`}>
-                                    <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-                                </Link> */}
+
 
                             </div>
                         </section>
