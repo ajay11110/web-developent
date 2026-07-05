@@ -43,7 +43,6 @@ const Home = () => {//====================================================
     const readdata = async () => {
         const snapshot = await getDocs(collection(firestore, "products"))
 
-
         const productList = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data()
