@@ -1,0 +1,87 @@
+        .starting {
+            padding: 0;
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .textload {
+            color: black;
+            font-size: 30px;
+            font-weight: bolder;
+                        animation: expanding2 3s ease-in-out 0s infinite;
+
+        }
+
+        .secondring {
+            border: 4px dotted black;
+            padding: 20px;
+            border-radius: 100%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: expanding 6s ease-in-out 0s infinite;
+
+        }
+
+        .firstring {
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 100px;
+            min-width: 120px;
+            min-height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: animation1 6s ease-in-out 0s infinite;
+        }
+
+        @keyframes expanding {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+
+            }
+
+            100% {
+                transform: rotate(360deg);
+
+            }
+        }
+        @keyframes expanding2 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(-180deg);
+
+            }
+
+            100% {
+                transform: rotate(-360deg);
+
+            }
+        }
+
+        @keyframes animation1 {
+            0% {
+                padding: 20px;
+            }
+
+            50% {
+                padding: 80px;
+            }
+
+            100% {
+                padding: 20px;
+            }
+        }

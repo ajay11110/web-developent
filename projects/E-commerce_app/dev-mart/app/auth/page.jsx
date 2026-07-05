@@ -13,7 +13,7 @@ const googleprovider = new GoogleAuthProvider()
 const firestore = getFirestore(app)
 
 const writeUserData = async (name, email, password, uid) => {
-    let result = await setDoc(doc(firestore, "users", uid), {
+    let result = await setDoc(doc(firestore, "users", email), {
         userName: name,
         email: email,
         password: password,

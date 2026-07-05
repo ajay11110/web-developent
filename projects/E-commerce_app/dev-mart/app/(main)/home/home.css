@@ -1,3 +1,9 @@
+.start {
+    background-color: #f5f5f5;
+    min-height: calc(100vh - 50px);
+}
+
+
 .searchbox {
     display: flex;
     min-width: 100vw;
@@ -29,17 +35,20 @@
 .catagory {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
     padding: 0px 10px;
 }
 
 .capsules {
-    background-color: rgba(128, 128, 128, 0.309);
+    background-color: rgba(255, 255, 255, 0.309);
     margin: 3px;
     padding: 5px;
     border: 1px solid black;
     border-radius: 10px;
     font-weight: 800;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.571);
+    color: black;
+    text-decoration: none;
+
 }
 
 .sec {
@@ -47,7 +56,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-.sectiontitle{
+.sectiontitle {
     font-size: 30px;
     font-weight: bolder;
     padding: 10px;

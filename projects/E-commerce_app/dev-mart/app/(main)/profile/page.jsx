@@ -24,7 +24,7 @@ const Profile = () => {//=======================================================
             router.replace("/auth")
         }
 
-        readUserData(user.uid)
+        readUserData(user.email)
 
     }, [user, loading])
 

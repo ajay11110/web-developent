@@ -20,10 +20,9 @@ const Addresses = () => {//=====================================================
     useEffect(() => {
         if (loading) return
 
-        docref = doc(firestore, "users", user.uid, "addresses", "address")
+        docref = doc(firestore, "users", user.email, "addresses", "address")
 
         loadAddress(docref)
-
 
     }, [user, loading])
 

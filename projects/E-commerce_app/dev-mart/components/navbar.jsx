@@ -15,7 +15,7 @@ const Navbar = () => {
                 <div onClick={() => { router.push("/orders") }} className="navtitle ordersbtn pointer">Orders</div>
                 <div onClick={() => { router.push("/profile") }} className="navtitle profilebtn pointer">Profile</div>
                 <div className="navtitle ">
-                    <button className="cartbtn pointer">Cart</button>
+                    <button onClick={()=>{router.replace("/cart")}} className="cartbtn pointer">Cart</button>
                 </div>
             </div>
         </div>

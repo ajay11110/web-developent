@@ -7,13 +7,13 @@
     border: 1px solid black;
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
     margin: 5px;
-    background-color: rgb(178, 178, 178);
-    /* width: 200px; */
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
     padding: 5px;
     justify-content: space-between;
+        box-shadow: 0 0 15px 1px black;
+
 }
 
 .start {
@@ -21,22 +21,23 @@
 }
 
 .lowerpart {
-    background-color: rgb(178, 178, 178);
+    background-color: rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .img {
-    background-color: white;
+    background-color: rgba(224, 255, 219, 0.927);
     border-radius: 10px;
     margin-right: 10px;
 }
 
 .photo {
-    /* width: 100px; */
     height: 100px;
     object-fit: contain;
+    display: flex;
+    align-items: center;
 }
 
 .title {

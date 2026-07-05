@@ -9,18 +9,19 @@
     flex-direction: column;
     justify-content: center;
     margin: 10px;
-    background-color: rgb(178, 178, 178);
+    background-color: rgb(255, 255, 255);
     width: 200px;
     border-radius: 10px;
     padding: 10px;
+    box-shadow: 0 0 20px 2px black;
 }
 
 .lowerpart{
-    background-color: rgb(178, 178, 178);;
+    background-color: rgb(255, 255, 255);;
 }
 
 .img{
-    background-color: white;
+    background-color: rgba(212, 255, 226, 0.655);
     border-radius: 10px;
 }
 .photo{

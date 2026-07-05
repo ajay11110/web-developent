@@ -1,6 +1,7 @@
 "use client"
 import React, { useRef } from "react";
 import "./list.css"
+import {v4 as uuidv4} from "uuid"
 import { useRouter } from "next/navigation";
 import { app } from "../../firebase"
 import { Firestore, setDoc, doc, getFirestore } from "firebase/firestore";
@@ -21,12 +22,14 @@ const Lists = () => {//=========================================================
 
     const slugmaker = (name) => {
 
-        return name
+        const result = name
             .toLowerCase()
             .trim()
             .replace(/[^a-z0-9\s-]/g, "")
             .replace(/\s+/g, "-")
             .replace(/-+/g, "-")
+
+        return `${result}-${uuidv4()}`
     }
 
     const savebtn = async () => {

@@ -1,10 +1,15 @@
 import React from "react";
+import "./loading.css"
 
-const Loading = ()=>{
-    return(
-        <>
-        <h1>Loading...</h1>
-        </>
+const Loading = () => {
+    return (
+        <div className="starting">
+            <div className="firstring">
+                <div className="secondring">
+                    <div className="textload">Loading</div>
+                </div>
+            </div>
+        </div>
     )
 }
 

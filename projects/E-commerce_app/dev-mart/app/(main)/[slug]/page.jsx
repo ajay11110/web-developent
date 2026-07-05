@@ -1,7 +1,14 @@
-import React from "react";
+"use client"
+import React, { useState, useEffect } from "react";
 import "./slug.css"
 import "../home/home.css"
 import Itemcard from "@/components/itemcard";
+import { Firestore, doc, getDoc, getDocs, collection, getFirestore, gotdoc } from "firebase/firestore";
+import { app } from "@/app/firebase"
+import { useParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+
+const firestore = getFirestore(app)
 
 const data = {
   type: "Phones",
@@ -18,18 +25,48 @@ const data = {
 
 
 
-export default async function Itempage({ params }) {
+export default function Itempage() {//======================================================
+
+  const { slug } = useParams()
+
+  const router = useRouter()
+
+  const [details, setdetails] = useState({})
+  const [allproduct, setallproduct] = useState([])
+
+
+  const readItem = async (slug) => {
+
+    let docref = doc(firestore, "products", slug)
+    const snapshot = await getDoc(docref)
+    setdetails(snapshot.data())
+  }
+
+  const readdata = async () => {
+    const snapshot = await getDocs(collection(firestore, "products"))
+    const productList = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data()
+    }))
+    setallproduct(productList)
+  }
+
+  useEffect(() => {
+    readItem(slug)
+    readdata()
+  }, [slug])
+
+
   return (
 
 
-    <div className="iipage">
-
+    <div className="ipage">
       <div className="iimg">
-        <img className="iphoto" src={data.url} alt="Product photo" />
+        <img className="iphoto" src={details.photo} alt="Product photo" />
       </div>
-      <div className="iprice">{data.price}</div>
-      <div className="ititle">{data.title}</div>
-      <div className="idescription">{data.description}</div>
+      <div className="iprice">{details.price}</div>
+      <div className="ititle">{details.name}</div>
+      <div className="idescription">{details.description}</div>
       <div className="ibtns">
         <button className="ibtn iwish pointer">Add to Wishlist</button>
         <button className="ibtn ibuy pointer">Buy Now</button>
@@ -38,7 +75,7 @@ export default async function Itempage({ params }) {
 
       <div className="iextra">
         <div className="iextitle ititle">
-          specifications
+          {details.specification}
         </div>
         <div className="iexdes">
           very premium phone in this budget
@@ -46,17 +83,16 @@ export default async function Itempage({ params }) {
       </div>
 
       <div className="iexplore">
-        <div className="iexploremoretitle">Explore more {data.type}</div>
+        <div className="iexploremoretitle">Explore more {details.type}</div>
         <div className="ilist">
-          <section id="phones">
-            <div className="phonessec sec">
-              <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-              <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-              <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-              <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-              <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-              <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
-              <Itemcard type="phone" url="https://media-ik.croma.com/Croma%20Assets/Communication/Mobiles/Images/314521_0_v6eqtj.png" title="Nothing 3A silk" description="it is cool phone" price={1000} />
+          <section >
+            <div className="sec">
+              {allproduct
+                .filter((item) => item.type === details.type)
+                .filter((item)=> item.slug !==details.slug)
+                .map((item) => (
+                  <Itemcard onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
+                ))}
             </div>
           </section>
         </div>
