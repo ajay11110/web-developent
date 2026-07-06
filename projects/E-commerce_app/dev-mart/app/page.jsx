@@ -3,6 +3,7 @@ import { app } from "./firebase"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Loading from "@/components/loading";
 
 const auth = getAuth(app)
 
@@ -29,7 +30,7 @@ export default function App() {
 
   return (
     <>
-      <h1>Loading...</h1>
+    <Loading/>
     </>
   )
 }

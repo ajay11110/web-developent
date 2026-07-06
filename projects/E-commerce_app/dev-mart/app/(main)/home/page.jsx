@@ -50,12 +50,9 @@ const Home = () => {//====================================================
         setallproducts(productList)
     }
 
-    const buybtnfn = async (e, id, userId) => {
+    const buybtnfn = async (e, id) => {
         e.stopPropagation();
-        const docref = doc(firestore, "users", userId, "buyed", id)
-        await setDoc(docref, {
-            itemId: id
-        })
+        router.replace(`/buy/${id}`)
     }
 
     const cartbtnfn = async (e, id, userId) => {
@@ -65,7 +62,6 @@ const Home = () => {//====================================================
             itemId: id
         })
     }
-
 
     if (!islogin) {
         return (
@@ -103,7 +99,7 @@ const Home = () => {//====================================================
                                 {allproduct
                                     .filter((item) => item.type === "phone")
                                     .map((item) => (
-                                        <Itemcard buybtn={(e) => { buybtnfn(e, item.slug, userid) }} cartbtn={(e) => { cartbtnfn(e, item.slug, userid) }} onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
+                                        <Itemcard buybtn={(e) => { buybtnfn(e, item.slug) }} cartbtn={(e) => { cartbtnfn(e, item.slug, userid) }} onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
                                     ))}
                             </div>
                         </section>

@@ -22,13 +22,14 @@ const writeUserData = async (name, email, password, uid) => {
         gender: "not set yet",
         uid: uid
     })
-        .then(async () => {
-            await setDoc(doc(firestore, "users", uid, "addresses", "address"), {
-                address1: "not set",
-                addressCount:1
-            })
-        })
 
+    await setDoc(doc(firestore, "users", email, "addresses", "addressCount"), {
+        addressCount: 1
+    })
+
+    await setDoc(doc(firestore, "users", email, "addresses", "address1"), {
+        address: "not set"
+    })
 
 }
 

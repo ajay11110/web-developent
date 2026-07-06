@@ -24,7 +24,7 @@ const Profile = () => {//=======================================================
             router.replace("/auth")
         }
 
-        readUserData(user.email)
+        readUserData()
 
     }, [user, loading])
 
@@ -43,8 +43,8 @@ const Profile = () => {//=======================================================
         signOut(auth)
     }
 
-    const readUserData = async (uid) => {
-        let docref = doc(firestore, "users", uid)
+    const readUserData = async () => {
+        let docref = doc(firestore, "users", user.email)
         const snapshot = await getDoc(docref)
         const data = snapshot.data()
 

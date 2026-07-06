@@ -52,8 +52,8 @@ const Cart = () => {//=====================================================
         console.log(productDetails)
     }
 
-    const buyfn = async () => {
-
+    const buyfn = (slug) => {
+        router.replace(`buy/${slug}`)
     }
 
     const removefn = async (slug) => {
@@ -62,18 +62,19 @@ const Cart = () => {//=====================================================
         readcart(user.email)
     }
 
+    const buyallfn = () => {
+        router.replace("/buyall")
+    }
 
     return (
         <>
             <div className="title">Cart</div>
-
             {itemsdata.map((item) => (
-                <Cartcard removebtn={() => { removefn(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
+                <Cartcard removebtn={() => { removefn(item.slug) }} buybtn={() => { buyfn(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
 
             ))}
-
             <div className="buyall">
-                <button className="buyallbtn">Buy all</button>
+                <button onClick={buyallfn} className="buyallbtn">Buy all</button>
             </div>
         </>
     )
