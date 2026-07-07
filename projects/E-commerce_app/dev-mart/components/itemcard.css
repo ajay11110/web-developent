@@ -16,51 +16,77 @@
     box-shadow: 0 0 20px 2px black;
 }
 
-.lowerpart{
-    background-color: rgb(255, 255, 255);;
+.lowerpart {
+    background-color: rgb(255, 255, 255);
+    ;
 }
 
-.img{
+.img {
     background-color: rgba(212, 255, 226, 0.655);
     border-radius: 10px;
-}
-.photo{
-    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-.title{
+.photo {
+    width: 180px;
+    border-radius: 10px;
+}
+
+.title {
     font-size: 25px;
     font-weight: bolder;
 }
 
-.description{
+.description {
     font-size: 16px;
     font-weight: 500;
 }
 
-.price{
+.price {
     color: rgb(0, 255, 238);
     font-size: 20px;
     font-weight: bold;
 }
 
-.btns{
+.btns {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.btn{
+.btn {
     padding: 10px;
     border: none;
     border-radius: 10px;
     margin-top: 8px;
 }
 
-.buy{
+.buy {
     background-color: #04ff00;
 }
 
-.add{
+.add {
     background-color: rgb(255, 153, 0);
+}
+
+.wishlist-btn {
+    color: #000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: .25s;
+    position: absolute;
+    top: 10px;
+    right: 2px;
+}
+
+.wishlist-btn:hover {
+    color: #ff4d6d;
+}
+
+.wishlist-btn.active {
+    color: #ff1744;
 }

@@ -5,7 +5,6 @@ import "./auth.css"
 import { app } from "../firebase"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Firestore, addDoc, doc, collection, getFirestore, setDoc } from "firebase/firestore";
-import { useAuth } from "../authprovider";
 
 const auth = getAuth(app)
 const googleprovider = new GoogleAuthProvider()

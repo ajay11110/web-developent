@@ -63,6 +63,14 @@ const Home = () => {//====================================================
         })
     }
 
+    const wishfn = async (e, id) => {
+        e.stopPropagation()
+        const docref = doc(firestore, "users", userid, "wishlist", id)
+        await setDoc(docref, {
+            itemId: id
+        })
+    }
+
     if (!islogin) {
         return (
             <>
@@ -99,7 +107,7 @@ const Home = () => {//====================================================
                                 {allproduct
                                     .filter((item) => item.type === "phone")
                                     .map((item) => (
-                                        <Itemcard buybtn={(e) => { buybtnfn(e, item.slug) }} cartbtn={(e) => { cartbtnfn(e, item.slug, userid) }} onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
+                                        <Itemcard onwish={(e) => { wishfn(e, item.slug) }} buybtn={(e) => { buybtnfn(e, item.slug) }} cartbtn={(e) => { cartbtnfn(e, item.slug, userid) }} onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
                                     ))}
                             </div>
                         </section>
@@ -110,7 +118,7 @@ const Home = () => {//====================================================
                                 {allproduct
                                     .filter((item) => item.type === "watch")
                                     .map((item) => (
-                                        <Itemcard buybtn={(e) => { buybtnfn(e, item.slug, userid) }} cartbtn={(e) => { cartbtnfn(e, item.slug, userid) }} onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
+                                        <Itemcard onwish={(e) => { wishfn(e, item.slug) }} buybtn={(e) => { buybtnfn(e, item.slug, userid) }} cartbtn={(e) => { cartbtnfn(e, item.slug, userid) }} onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
                                     ))}
                             </div>
                         </section>
@@ -120,7 +128,7 @@ const Home = () => {//====================================================
                                 {allproduct
                                     .filter((item) => item.type === "cloth")
                                     .map((item) => (
-                                        <Itemcard buybtn={(e) => { buybtnfn(e, item.slug, userid) }} cartbtn={(e) => { cartbtnfn(e, item.slug, userid) }} onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
+                                        <Itemcard onwish={(e) => { wishfn(e, item.slug) }} buybtn={(e) => { buybtnfn(e, item.slug, userid) }} cartbtn={(e) => { cartbtnfn(e, item.slug, userid) }} onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
                                     ))}
                             </div>
                         </section>
@@ -130,7 +138,7 @@ const Home = () => {//====================================================
                                 {allproduct
                                     .filter((item) => item.type === "book")
                                     .map((item) => (
-                                        <Itemcard buybtn={(e) => { buybtnfn(e, item.slug, userid) }} cartbtn={(e) => { cartbtnfn(e, item.slug, userid) }} onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
+                                        <Itemcard onwish={(e) => { wishfn(e, item.slug) }} buybtn={(e) => { buybtnfn(e, item.slug, userid) }} cartbtn={(e) => { cartbtnfn(e, item.slug, userid) }} onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
                                     ))}
                             </div>
                         </section>
@@ -140,7 +148,7 @@ const Home = () => {//====================================================
                                 {allproduct
                                     .filter((item) => item.type === "home decor")
                                     .map((item) => (
-                                        <Itemcard buybtn={(e) => { buybtnfn(e, item.slug, userid) }} cartbtn={(e) => { cartbtnfn(e, item.slug, userid) }} onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
+                                        <Itemcard onwish={(e) => { wishfn(e, item.slug) }} buybtn={(e) => { buybtnfn(e, item.slug, userid) }} cartbtn={(e) => { cartbtnfn(e, item.slug, userid) }} onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
                                     ))}
                             </div>
                         </section>

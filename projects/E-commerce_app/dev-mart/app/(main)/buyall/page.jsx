@@ -67,7 +67,6 @@ const Buyall = () => {//========================================================
             );
 
             const docRef2 = doc(firestore, "users", user.email, "cart", item.slug);
-
             batch.delete(docRef2)
         });
         console.log("done")

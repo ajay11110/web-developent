@@ -14,7 +14,6 @@ const Cart = () => {//=====================================================
     const { user, loading } = useAuth()
     const router = useRouter()
 
-    const [cartdata, setcartdata] = useState([])
     const [itemsdata, setitemsdata] = useState([])
 
     useEffect(() => {
@@ -35,7 +34,6 @@ const Cart = () => {//=====================================================
             id: doc.id,
             ...doc.data()
         }))
-        setcartdata(productList)
 
         const productDetails = await Promise.all(
             productList.map(async (item) => {

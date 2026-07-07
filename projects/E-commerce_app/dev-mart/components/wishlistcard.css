@@ -12,7 +12,8 @@
     border-radius: 10px;
     padding: 5px;
     justify-content: space-between;
-        box-shadow: 0 0 15px 1px black;
+    box-shadow: 0 0 15px 1px black;
+    margin-bottom: 15px;
 
 }
 
@@ -31,6 +32,9 @@
     background-color: rgba(224, 255, 219, 0.927);
     border-radius: 10px;
     margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .photo {

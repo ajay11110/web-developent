@@ -2,7 +2,7 @@
 import React from "react";
 import "./wishlistcard.css"
 
-const Wishlistcard = ({ type, url, title, description, price }) => {
+const Wishlistcard = ({ url, title, description, price, onremove, oncart }) => {
     return (
         <>
             <div className="card pointer">
@@ -20,8 +20,8 @@ const Wishlistcard = ({ type, url, title, description, price }) => {
                     </div>
                 </div>
                 <div className="btns">
-                    <button className="btn add pointer">Remove from Wishlist</button>
-                    <button className="btn buy pointer">Add to Cart</button>
+                    <button onClick={onremove} className="btn add pointer">Remove from Wishlist</button>
+                    <button onClick={oncart} className="btn buy pointer">Add to Cart</button>
                 </div>
             </div>
         </>

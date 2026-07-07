@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./editprofile.css"
 import { useAuth } from "@/app/authprovider";
 import { useRouter } from "next/navigation";
@@ -10,14 +10,6 @@ import { Firestore, getDoc, doc, getFirestore, updateDoc } from "firebase/firest
 const firestore = getFirestore(app)
 
 const Editprofile = () => {//====================================================================
-    const userdata = {
-        id: 1234,
-        photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz3ATZCehw5N5h__4bDLAwHjU2tTHx2gv-VbLkz49qcw&s=10",
-        name: "Ajay Yadav",
-        email: "ayajay2006@gmail.com",
-        mobile_no: "+91 9911991199",
-        gender: "Male"
-    }
 
     const { user, loading } = useAuth()
 
@@ -33,16 +25,7 @@ const Editprofile = () => {//===================================================
 
         readUserData(user.email)
 
-
     }, [user, loading])
-
-    const [profile, setprofile] = useState({
-        name: "",
-        photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-TPvhpo33NdVX_qJ9clxyvaJ1-ljChnX-iPhnusqE2w&s",
-        email: "",
-        mobile_no: "",
-        gender: ""
-    })
 
     const [update, setupdate] = useState({
         name: "",
@@ -58,14 +41,6 @@ const Editprofile = () => {//===================================================
         setdocref(docref)
         const snapshot = await getDoc(docref)
         const data = snapshot.data()
-
-        setprofile({
-            name: data.userName,
-            photo: data.profilePhoto,
-            email: data.email,
-            mobile_no: data.mobile,
-            gender: data.gender
-        })
 
         setupdate({
             name: data.userName,
@@ -110,7 +85,13 @@ const Editprofile = () => {//===================================================
                     <div className="data">
                         <input className="dname dtext" value={update.name} onChange={(e) => { change(e, "name") }} type="text" />
                         <input className="dmobile dtext" value={update.mobile} onChange={(e) => { change(e, "mobile") }} type="text" />
-                        <input className="dgender dtext" value={update.gender} onChange={(e) => { change(e, "gender") }} type="text" />
+                        {/* <input className="dgender dtext" value={update.gender} onChange={(e) => { change(e, "gender") }} type="text" /> */}
+                        <select value={update.gender} className="dtext" onChange={e => change(e, "gender")} name="list" id="list">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Not say">Not say</option>
+                            <option value="Custom">Custom</option>
+                        </select>
                     </div>
                 </div>
             </div>
