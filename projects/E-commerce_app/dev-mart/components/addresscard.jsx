@@ -1,14 +1,14 @@
 import React from "react";
-import "./addresscard.css"
+import styles from "./addresscard.module.css"
 
 const Addresscard = ({ value, onchange, onedit, ondelete }) => {
     return (
         <>
-            <div className="start">
-                <input value={value} onChange={onchange} className="addressinput" type="text" name="address" id="address" placeholder="Address" />
-                <div className="btns">
-                    <button onClick={onedit} className="editbtn btn">Edit</button>
-                    <button onClick={ondelete} className="deletebtn btn">Delete</button>
+            <div className={styles.start}>
+                <input value={value} onChange={onchange} className={styles.addressinput} type="text" name="address" id="address" placeholder="Address" />
+                <div className={styles.btns}>
+                    <button onClick={onedit} className={`${styles.editbtn} ${styles.btn}`}>Edit</button>
+                    <button onClick={ondelete} className={`${styles.deletebtn} ${styles.btn}`}>Delete</button>
                 </div>
             </div>
         </>

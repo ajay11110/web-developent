@@ -1,13 +1,13 @@
 "use client"
 import React, { useState, useEffect } from "react";
-import "./slug.css"
-import "../home/home.css"
+import styles from "./slug.module.css"
 import Itemcard from "@/components/itemcard";
 import { Firestore, doc, getDoc, getDocs, collection, getFirestore, gotdoc, setDoc } from "firebase/firestore";
 import { app } from "@/app/firebase"
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/authprovider";
+import Loading from "@/components/loading";
 
 const firestore = getFirestore(app)
 
@@ -19,6 +19,7 @@ export default function Itempage() {//==========================================
 
   const [details, setdetails] = useState({})
   const [allproduct, setallproduct] = useState([])
+  const [pageLoading, setpageLoading] = useState(true)
 
 
   const readItem = async (slug) => {
@@ -26,6 +27,7 @@ export default function Itempage() {//==========================================
     let docref = doc(firestore, "products", slug)
     const snapshot = await getDoc(docref)
     setdetails(snapshot.data())
+    setpageLoading(false)
   }
 
   const readdata = async () => {
@@ -56,7 +58,7 @@ export default function Itempage() {//==========================================
     })
 
   }
-  
+
   const cartfn = async () => {
     const docref = doc(firestore, "users", user.email, "cart", slug)
     await setDoc(docref, {
@@ -64,35 +66,42 @@ export default function Itempage() {//==========================================
     })
   }
 
+  if (pageLoading) {
+    return (
+      <>
+        <Loading />
+      </>
+    )
+  }
 
-  return (
-    <div className="ipage">
-      <div className="iimg">
-        <img className="iphoto" src={details.photo} alt="Product photo" />
+  else return (
+    <div className={styles.ipage}>
+      <div className={styles.iimg}>
+        <img className={styles.iphoto} src={details.photo} alt="Product photo" />
       </div>
-      <div className="iprice">{details.price}</div>
-      <div className="ititle">{details.name}</div>
-      <div className="idescription">{details.description}</div>
-      <div className="ibtns">
-        <button onClick={wishfn} className="ibtn iwish pointer">Add to Wishlist</button>
-        <button onClick={buyfn} className="ibtn ibuy pointer">Buy Now</button>
-        <button onClick={cartfn} className="ibtn iadd pointer">Add to Cart</button>
+      <div className={styles.iprice}>{details.price}</div>
+      <div className={styles.ititle}>{details.name}</div>
+      <div className={styles.idescription}>{details.description}</div>
+      <div className={styles.ibtns}>
+        <button onClick={wishfn} className={`${styles.ibtn}  pointer`}>Add to Wishlist</button>
+        <button onClick={buyfn} className={`${styles.ibtn} ${styles.ibuy} pointer`}>Buy Now</button>
+        <button onClick={cartfn} className={`${styles.ibtn} ${styles.iadd} pointer`}>Add to Cart</button>
       </div>
 
       <div className="iextra">
-        <div className="iextitle ititle">
+        <div className={styles.ititle}>
           {details.specification}
         </div>
-        <div className="iexdes">
+        <div className={styles.iexdes}>
           very premium phone in this budget
         </div>
       </div>
 
       <div className="iexplore">
-        <div className="iexploremoretitle">Explore more {details.type}</div>
+        <div className={styles.iexploremoretitle}>Explore more {details.type}</div>
         <div className="ilist">
           <section >
-            <div className="sec">
+            <div className={styles.sec}>
               {allproduct
                 .filter((item) => item.type === details.type)
                 .filter((item) => item.slug !== details.slug)

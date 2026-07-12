@@ -1,6 +1,6 @@
 "use client"
 import React, { useRef } from "react";
-import "./list.css"
+import styles from "./list.module.css"
 import { v4 as uuidv4 } from "uuid"
 import { useRouter } from "next/navigation";
 import { app } from "../../firebase"
@@ -54,25 +54,23 @@ const Lists = () => {//=========================================================
     }
 
     const change = (e) => {
-        console.log(e.target.value, selectref.current.value)
     }
 
     return (
         <>
-            <div className="title">List new Product</div>
+            <div className={styles.title}>List new Product</div>
             <div className="middle common">
-                <div className="labdata">
-                    <div className="lable">
-                        <div className="type ltext">Type</div>
-                        <div className="name ltext">Name</div>
-                        <div className="desc ltext">Description</div>
-                        <div className="photo ltext">Photo Url</div>
-                        <div className="photo ltext">Price</div>
-                        <div className="photo ltext">Specification</div>
+                <div className={styles.labdata}>
+                    <div className={styles.lable}>
+                        <div className={styles.ltext}>Type</div>
+                        <div className={styles.ltext}>Name</div>
+                        <div className={styles.ltext}>Description</div>
+                        <div className={styles.ltext}>Photo Url</div>
+                        <div className={styles.ltext} > Price</div>
+                        <div className={styles.ltext}>Specification</div>
                     </div>
-                    <div className="data">
-                        {/* <input ref={typeref} className="dname dtext" type="text" /> */}
-                        <select className="dtext" onChange={e => change(e)} ref={selectref} name="list" id="list">
+                    <div className={styles.data}>
+                        <select className={styles.dtext} ref={selectref} name="list" id="list">
                             <option value="">choose an option</option>
                             <option value="phone">Phones</option>
                             <option value="watch">Watches</option>
@@ -80,18 +78,18 @@ const Lists = () => {//=========================================================
                             <option value="book">Books</option>
                             <option value="homedecor">Home Decor</option>
                         </select>
-                        <input ref={nameref} className="dmobile dtext" type="text" />
-                        <input ref={descriptionref} className="dgender dtext" type="text" />
-                        <input ref={photoref} className="dgender dtext" type="text" />
-                        <input ref={priceref} className="dgender dtext" type="text" />
-                        <input ref={specificationref} className="dgender dtext" type="text" />
+                        <input ref={nameref} className={styles.dtext} type="text" />
+                        <input ref={descriptionref} className={styles.dtext} type="text" />
+                        <input ref={photoref} className={styles.dtext} type="text" />
+                        <input ref={priceref} className={styles.dtext} type="text" />
+                        <input ref={specificationref} className={styles.dtext} type="text" />
                     </div>
                 </div>
-            </div>
+            </div >
 
-            <div className="btns">
-                <button className="btn savebtn" onClick={savebtn}>Add</button>
-                <button className="btn discardbtn" onClick={() => { router.replace("/profile") }}>Discard</button>
+            <div className={styles.btns}>
+                <button className={`${styles.btn} ${styles.savebtn}`} onClick={savebtn}>Add</button>
+                <button className={`${styles.btn} ${styles.discardbtn}`} onClick={() => { router.replace("/profile") }}>Discard</button>
             </div>
         </>
     )

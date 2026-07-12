@@ -1,11 +1,13 @@
 "use client"
 import Cartcard from "@/components/cartcard";
 import React, { useEffect, useState } from "react";
-import "./cart.css"
+import styles from "./cart.module.css"
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/authprovider";
 import { app } from "@/app/firebase"
 import { Firestore, doc, deleteDoc, getDoc, getDocs, collection, getFirestore } from "firebase/firestore";
+import Loading from "@/components/loading";
+import NoDataAvialble from "@/components/nodataavialblle";
 
 const firestore = getFirestore(app)
 
@@ -15,6 +17,9 @@ const Cart = () => {//=====================================================
     const router = useRouter()
 
     const [itemsdata, setitemsdata] = useState([])
+    const [pageloading, setpageloading] = useState(true)
+    const [empty, setempty] = useState(0)
+
 
     useEffect(() => {
         if (loading) return
@@ -30,6 +35,7 @@ const Cart = () => {//=====================================================
     const readcart = async (id) => {
         const collectionref = collection(firestore, "users", id, "cart")
         const snapshot = await getDocs(collectionref)
+        setempty(snapshot.docs.length)
         const productList = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data()
@@ -47,7 +53,7 @@ const Cart = () => {//=====================================================
         );
 
         setitemsdata(productDetails)
-        console.log(productDetails)
+        setpageloading(false)
     }
 
     const buyfn = (slug) => {
@@ -64,15 +70,20 @@ const Cart = () => {//=====================================================
         router.replace("/buyall")
     }
 
-    return (
+    if (pageloading) {
+        return <Loading />
+    }
+
+    else if (!empty) return <NoDataAvialble message="Please add Products to Cart" />
+
+    else return (
         <>
-            <div className="title">Cart</div>
+            <div className={styles.title}>Cart</div>
             {itemsdata.map((item) => (
                 <Cartcard removebtn={() => { removefn(item.slug) }} buybtn={() => { buyfn(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
-
             ))}
-            <div className="buyall">
-                <button onClick={buyallfn} className="buyallbtn">Buy all</button>
+            <div className={styles.buyall}>
+                <button onClick={buyallfn} className={styles.buyallbtn}>Buy all</button>
             </div>
         </>
     )

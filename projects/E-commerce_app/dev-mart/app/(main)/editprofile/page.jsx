@@ -1,10 +1,11 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import "./editprofile.css"
+import styles from "./editprofile.module.css"
 import { useAuth } from "@/app/authprovider";
 import { useRouter } from "next/navigation";
 import { app } from "@/app/firebase"
 import { Firestore, getDoc, doc, getFirestore, updateDoc } from "firebase/firestore";
+import Loading from "@/components/loading";
 
 
 const firestore = getFirestore(app)
@@ -14,6 +15,8 @@ const Editprofile = () => {//===================================================
     const { user, loading } = useAuth()
 
     const router = useRouter()
+
+    const [pageloading, setpageloading] = useState(true)
 
     useEffect(() => {
 
@@ -47,6 +50,8 @@ const Editprofile = () => {//===================================================
             mobile: data.mobile,
             gender: data.gender
         })
+
+        setpageloading(false)
     }
 
     const savebtn = async () => {
@@ -73,20 +78,22 @@ const Editprofile = () => {//===================================================
             setupdate((previous) => ({ ...previous, [type]: e.target.value }))
         }
     }
+
+    if (pageloading) return <Loading />
+
     return (
         <>
             <div className="middle common">
-                <div className="labdata">
-                    <div className="lable">
-                        <div className="name ltext">Name</div>
-                        <div className="mobile ltext">Phone No.</div>
-                        <div className="gender ltext"> Gender</div>
+                <div className={styles.labdata}>
+                    <div className={styles.lable}>
+                        <div className= {styles.ltext}>Name</div>
+                        <div className={styles.ltext}>Phone No.</div>
+                        <div className={styles.ltext}> Gender</div>
                     </div>
-                    <div className="data">
-                        <input className="dname dtext" value={update.name} onChange={(e) => { change(e, "name") }} type="text" />
-                        <input className="dmobile dtext" value={update.mobile} onChange={(e) => { change(e, "mobile") }} type="text" />
-                        {/* <input className="dgender dtext" value={update.gender} onChange={(e) => { change(e, "gender") }} type="text" /> */}
-                        <select value={update.gender} className="dtext" onChange={e => change(e, "gender")} name="list" id="list">
+                    <div className={styles.data}>
+                        <input className={styles.dtext} value={update.name} onChange={(e) => { change(e, "name") }} type="text" />
+                        <input className={styles.dtext} value={update.mobile} onChange={(e) => { change(e, "mobile") }} type="text" />
+                        <select value={update.gender} className={styles.dtext} onChange={e => change(e, "gender")} name="list" id="list">
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Not say">Not say</option>
@@ -96,9 +103,9 @@ const Editprofile = () => {//===================================================
                 </div>
             </div>
 
-            <div className="btns">
-                <button className="btn savebtn" onClick={savebtn}>Save</button>
-                <button className="btn discardbtn" onClick={() => { router.replace("/profile") }}>Discard</button>
+            <div className={styles.btns}>
+                <button className={`${styles.btn} ${styles.savebtn}`} onClick={savebtn}>Save</button>
+                <button className={`${styles.btn} ${styles.discardbtn}`} onClick={() => { router.replace("/profile") }}>Discard</button>
             </div>
         </>
     )

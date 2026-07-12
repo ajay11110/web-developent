@@ -14,12 +14,10 @@ export default function App() {
   useEffect(() => {
     const stop = onAuthStateChanged(auth, user => {
       if (user) {
-        console.log("user is loged in" , user)
         router.replace("/home")
       }
 
       else {
-        console.log("user is not logged in")
         router.replace("/auth")
       }
 

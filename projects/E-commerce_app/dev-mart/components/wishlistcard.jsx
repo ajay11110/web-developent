@@ -1,27 +1,27 @@
 "use client"
 import React from "react";
-import "./wishlistcard.css"
+import styles from "./wishlistcard.module.css"
 
 const Wishlistcard = ({ url, title, description, price, onremove, oncart }) => {
     return (
         <>
-            <div className="card pointer">
-                <div className="start">
-                    <div className="img">
-                        <img className="photo" src={url} alt="photo" />
+            <div className={`${styles.card} pointer`}>
+                <div className={styles.start}>
+                    <div className={styles.img}>
+                        <img className={styles.photo} src={url} alt="photo" />
                     </div>
-                    <div className="lowerpart">
-                        <div className="title">{title}</div>
-                        <div className="description">{description}</div>
-                        <div className="span">
+                    <div className={styles.lowerpart}>
+                        <div className={styles.title}>{title}</div>
+                        <div className={styles.description}>{description}</div>
+                        <div className={styles.span}>
                             <span className="pricetitle">Price : only </span>
-                            <span className="price">{price}</span>
+                            <span className={styles.price}>{price}</span>
                         </div>
                     </div>
                 </div>
-                <div className="btns">
-                    <button onClick={onremove} className="btn add pointer">Remove from Wishlist</button>
-                    <button onClick={oncart} className="btn buy pointer">Add to Cart</button>
+                <div className={styles.btns}>
+                    <button onClick={onremove} className={`${styles.btn} ${styles.add} pointer`}>Remove from Wishlist</button>
+                    <button onClick={oncart} className={`${styles.btn} ${styles.buy} pointer`}>Add to Cart</button>
                 </div>
             </div>
         </>

@@ -3,7 +3,6 @@
     min-height: calc(100vh - 50px);
 }
 
-
 .searchbox {
     display: flex;
     min-width: 100vw;

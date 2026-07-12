@@ -1,11 +1,13 @@
 "use client"
 import Wishlistcard from "@/components/wishlistcard";
 import React, { useEffect, useState } from "react";
-import "./wishlist.css"
+import styles from "./wishlist.module.css"
 import { app } from "@/app/firebase"
 import { Firestore, writeBatch, setDoc, getDocs, collection, getFirestore, doc, getDoc, deleteDoc } from "firebase/firestore";
 import { useAuth } from "@/app/authprovider";
 import { useRouter } from "next/navigation";
+import Loading from "@/components/loading";
+import NoDataAvialble from "@/components/nodataavialblle";
 
 const firestore = getFirestore(app)
 
@@ -15,6 +17,8 @@ const Wishlist = () => {//=====================================================
     const router = useRouter()
 
     const [items, setitems] = useState([])
+    const [pageloading, setpageloading] = useState(true)
+    const [empty, setempty] = useState(0)
 
     useEffect(() => {
         if (loading) return
@@ -29,7 +33,7 @@ const Wishlist = () => {//=====================================================
     const readWishlist = async () => {
         const collectionref = collection(firestore, "users", user.email, "wishlist")
         const snapshot = await getDocs(collectionref)
-
+        setempty(snapshot.docs.length)
         const productList = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data()
@@ -46,6 +50,7 @@ const Wishlist = () => {//=====================================================
             }))
 
         setitems(productDetails)
+        setpageloading(false)
     }
 
     const cartfn = async (id) => {
@@ -78,15 +83,18 @@ const Wishlist = () => {//=====================================================
         router.replace("/cart")
     }
 
+    if (pageloading) return <Loading />
+
+    else if (!empty) return <NoDataAvialble message="Please add Products to Wishlist" />
 
     return (
         <>
-            <div className="title">Wishlist</div>
+            <div className={styles.title}>Wishlist</div>
             {items.map((item) => (
                 <Wishlistcard key={item.slug} oncart={() => { cartfn(item.slug) }} onremove={() => { removefn(item.slug) }} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
             ))}
-            <div className="buyall">
-                <button onClick={addAll} className="buyallbtn">Add all to Cart</button>
+            <div className={styles.buyall}>
+                <button onClick={addAll} className={styles.buyallbtn}>Add all to Cart</button>
             </div>
         </>
     )

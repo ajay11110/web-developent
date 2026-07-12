@@ -1,15 +1,15 @@
 "use client"
 import React from "react";
-import "./itemcard.css"
+import styles from "./itemcard.module.css"
 
 const Itemcard = ({ onwish, url, title, description, price, onclick, buybtn, cartbtn }) => {
     return (
         <>
-            <div onClick={onclick} className="card pointer">
-                <div className="img">
-                    <img className="photo" src={url} alt="photo" />
+            <div onClick={onclick} className={`${styles.card} pointer`}>
+                <div className={styles.img}>
+                    <img className={styles.photo} src={url} alt="photo" />
                     <div className="wishlist">
-                        <button className="wishlist-btn">
+                        <button className={styles['wishlist-btn']}>
                             <svg onClick={onwish}
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -26,14 +26,14 @@ const Itemcard = ({ onwish, url, title, description, price, onclick, buybtn, car
                         </button>
                     </div>
                 </div>
-                <div className="lowerpart">
-                    <div className="title">{title}</div>
-                    <div className="description">{description}</div>
+                <div className={styles.lowerpart}>
+                    <div className={styles.title}>{title}</div>
+                    <div className={styles.description}>{description}</div>
                     <span className="pricetitle">Price : only </span>
-                    <span className="price">{price}</span>
-                    <div className="btns">
-                        <button onClick={buybtn} className="btn buy pointer">Buy Now</button>
-                        <button onClick={cartbtn} className="btn add pointer">Add to Cart</button>
+                    <span className={styles.price}>{price}</span>
+                    <div className={styles.btns}>
+                        <button onClick={buybtn} className={`${styles.btn} ${styles.buy} pointer`}>Buy Now</button>
+                        <button onClick={cartbtn} className={`${styles.btn} ${styles.add} pointer`}>Add to Cart</button>
                     </div>
                 </div>
             </div>

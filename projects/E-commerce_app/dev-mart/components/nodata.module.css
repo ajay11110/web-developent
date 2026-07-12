@@ -1,0 +1,11 @@
+.startcard{
+    background-color: transparent;
+    margin: auto;
+    height: 80vh;
+    font-size: 50px;
+    color: rgb(168, 166, 166);
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

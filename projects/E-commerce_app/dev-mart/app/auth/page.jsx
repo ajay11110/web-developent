@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import "./auth.css"
+import styles from "./auth.module.css"
 import { app } from "../firebase"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Firestore, addDoc, doc, collection, getFirestore, setDoc } from "firebase/firestore";
@@ -51,13 +51,11 @@ const Auth = () => {
 
     const signinbtn = () => {
         signInWithEmailAndPassword(auth, email, password)
-            .then(value => console.log(value))
             .then(() => { router.replace("/") })
     }
 
     const googlelogin = () => {
         signInWithPopup(auth, googleprovider)
-            .then(value => console.log(value))
             .then(router.replace("/"))
 
     }
@@ -73,21 +71,21 @@ const Auth = () => {
     }
 
     return (
-        <div className="main">
-            <div className="border">
-                <div className="brandname">Dev Mart</div>
+        <div className={styles.main}>
+            <div className={styles.border}>
+                <div className={styles.brandname}>Dev Mart</div>
                 {issignup && (<input
                     type="text"
                     onChange={(e) => {
                         setname(e.target.value)
                     }}
-                    className="input name"
+                    className={`${styles.input} name`}
                     name="name"
                     placeholder="Name"
                     id="name" />)}
                 <input
                     type="email"
-                    className="input email"
+                    className={`${styles.input} email`}
                     onChange={(e) => {
                         setemail(e.target.value)
                     }}
@@ -96,24 +94,24 @@ const Auth = () => {
                     id="email" />
                 <input
                     type="password"
-                    className="input password"
+                    className={`${styles.input} password`}
                     onChange={(e) => {
                         setpassword(e.target.value)
                     }}
                     name="password"
                     placeholder="Password"
                     id="password" />
-                {!issignup && (<button className="pointer btn signinbtn" onClick={() => { signinbtn() }}>Sign in</button>)}
-                {issignup && (<button id="signup" className="pointer btn  signinbtn" onClick={signupbtn}>Sign up</button>)}
+                {!issignup && (<button className={`pointer ${styles.btn} ${styles.signinbtn}`} onClick={() => { signinbtn() }}>Sign in</button>)}
+                {issignup && (<button id="signup" className={`pointer ${styles.btn} ${styles.signinbtn}`} onClick={signupbtn}>Sign up</button>)}
                 <div className="moretext">or continue with</div>
-                <div className="options">
-                    <button className="google optionbtn" onClick={googlelogin}>Google</button>
-                    <button className="devid optionbtn">Dev Id</button>
+                <div className={styles.options}>
+                    <button className={`google ${styles.optionbtn}`} onClick={googlelogin}>Google</button>
+                    <button className={`devid ${styles.optionbtn}`}>Dev Id</button>
                 </div>
-                <div className="last">
+                <div className={styles.last}>
                     <span className="signuptext">New on Dev Mart </span>
-                    {!issignup && (<span className="pointer signupbtn" onClick={signuptext}> Sign up</span>)}
-                    {issignup && (<span id="belowsignin" onClick={signintext} className="pointer signupbtn"> Sign in</span>)}
+                    {!issignup && (<span className={`pointer ${styles.signupbtn}`} onClick={signuptext}> Sign up</span>)}
+                    {issignup && (<span id="belowsignin" onClick={signintext} className={`pointer ${styles.signupbtn}`}> Sign in</span>)}
                 </div>
             </div>
         </div>

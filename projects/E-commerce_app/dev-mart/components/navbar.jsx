@@ -1,7 +1,6 @@
 "use client"
 import React from "react";
 import { useRouter } from "next/navigation";
-import "../app/globals.css"
 
 const Navbar = () => {
 

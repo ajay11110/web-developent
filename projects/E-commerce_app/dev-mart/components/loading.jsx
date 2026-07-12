@@ -1,12 +1,12 @@
 import React from "react";
-import "./loading.css"
+import styles from "./loading.module.css"
 
 const Loading = () => {
     return (
-        <div className="starting">
-            <div className="firstring">
-                <div className="secondring">
-                    <div className="textload">Loading</div>
+        <div className={styles.starting}>
+            <div className={styles.firstring}>
+                <div className={styles.secondring}>
+                    <div className={styles.textload}>Loading</div>
                 </div>
             </div>
         </div>

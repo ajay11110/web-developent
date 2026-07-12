@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from "react";
 import Buycard from "@/components/buycard";
 import { useRouter } from "next/navigation";
-import "../buy/[slug]/process.css"
+import styles from "../buy/[slug]/process.module.css"
 import { useAuth } from "@/app/authprovider";
 import { app } from "@/app/firebase"
 import { doc, getDoc, collection, Firestore, getDocs, getFirestore, writeBatch } from "firebase/firestore";
+import Loading from "@/components/loading";
 
 const firestore = getFirestore(app)
 
@@ -69,13 +70,15 @@ const Buyall = () => {//========================================================
             const docRef2 = doc(firestore, "users", user.email, "cart", item.slug);
             batch.delete(docRef2)
         });
-        console.log("done")
         await batch.commit();
         router.replace("/orders")
     };
 
+    if (load) {
+        return <Loading />
+    }
 
-    return (
+    else return (
         <>
             {itemsdata.map((item) => (
                 <Buycard key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
@@ -83,19 +86,19 @@ const Buyall = () => {//========================================================
             ))}
 
             <div className="productprice">
-                <span className="text">Product price - </span>
-                <span className="pricetext">{price}</span>
+                <span className={styles.text}>Product price - </span>
+                <span className={styles.pricetext}>{price}</span>
             </div>
             <div className="gst">
-                <span className="text">GST - </span>
-                {!load && (<span className="pricetext">{(price) * 18 / 100}</span>)}
+                <span className={styles.text}>GST - </span>
+                {!load && (<span className={styles.pricetext}>{(price) * 18 / 100}</span>)}
             </div>
             <div className="totalprice">
-                <span className="text imptext">Total price - </span>
-                {!load && (<span className="pricetext impprice">{(price) * 1.18}</span>)}
+                <span className={`${styles.text} ${styles.imptext}`}>Total price - </span>
+                {!load && (<span className={styles.pricetext}>{(price) * 1.18}</span>)}
             </div>
-            <div className="proceed">
-                <button onClick={proceed} className="proceedbtn">Proceed</button>
+            <div className={styles.proceed}>
+                <button onClick={proceed} className={styles.proceedbtn}>Proceed</button>
             </div>
         </>
     )

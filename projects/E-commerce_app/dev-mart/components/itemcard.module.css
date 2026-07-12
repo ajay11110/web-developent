@@ -1,7 +1,3 @@
-* {
-    padding: 0;
-    margin: 0;
-}
 
 .card {
     border: 1px solid black;
@@ -87,6 +83,6 @@
     color: #ff4d6d;
 }
 
-.wishlist-btn.active {
+.wishlistBtnActive {
     color: #ff1744;
 }

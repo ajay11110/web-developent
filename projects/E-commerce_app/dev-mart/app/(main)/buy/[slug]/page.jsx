@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from "react";
 import Buycard from "@/components/buycard";
 import { useParams, useRouter } from "next/navigation";
-import "./process.css"
+import styles from "./process.module.css"
 import { useAuth } from "@/app/authprovider";
 import { app } from "@/app/firebase"
 import { doc, Firestore, getDoc, getFirestore, setDoc, deleteDoc } from "firebase/firestore";
+import Loading from "@/components/loading";
 
 const firestore = getFirestore(app)
 
@@ -51,26 +52,29 @@ const Process = () => {//=======================================================
         await deleteDoc(docref)
     }
 
+    if (load) {
+        return <Loading />
+    }
 
-    return (
+    else return (
         <>
             <div className="start">
                 <Buycard type={productdata.type} url={productdata.photo} title={productdata.name} description={productdata.description} price={productdata.price} />
             </div>
             <div className="productprice">
-                <span className="text">Product price - </span>
-                <span className="pricetext">{productdata.price}</span>
+                <span className={styles.text}>Product price - </span>
+                <span className={styles.pricetext}>{productdata.price}</span>
             </div>
             <div className="gst">
-                <span className="text">GST - </span>
-                {!load && (<span className="pricetext">{(productdata.price) * 18 / 100}</span>)}
+                <span className={styles.text}>GST - </span>
+                {!load && (<span className={styles.pricetext}>{(productdata.price) * 18 / 100}</span>)}
             </div>
             <div className="totalprice">
-                <span className="text imptext">Total price - </span>
-                {!load && (<span className="pricetext impprice">{(productdata.price) * 1.18}</span>)}
+                <span className={`${styles.text} ${styles.imptext}`}>Total price - </span>
+                {!load && (<span className={styles.pricetext}>{(productdata.price) * 1.18}</span>)}
             </div>
-            <div className="proceed">
-                <button onClick={proceed} className="proceedbtn">Proceed</button>
+            <div className={styles.proceed}>
+                <button onClick={proceed} className={styles.proceedbtn}>Proceed</button>
             </div>
         </>
     )

@@ -4,8 +4,9 @@ import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { Firestore, getDoc, doc, getFirestore } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import "./profile.css"
+import styles from "./profile.module.css"
 import { useAuth } from "@/app/authprovider";
+import Loading from "@/components/loading";
 
 
 const auth = getAuth(app)
@@ -36,6 +37,8 @@ const Profile = () => {//=======================================================
         gender: ""
     })
 
+    const [pageloading, setpageloading] = useState(true)
+
     const router = useRouter()
 
     const logout = async () => {
@@ -55,53 +58,54 @@ const Profile = () => {//=======================================================
             mobile_no: data.mobile,
             gender: data.gender
         })
+        setpageloading(false)
     }
 
-
+    if (pageloading) return <Loading />
 
     return (
         <>
-            <div className="profile">
-                <div className="upper">
-                    <div className="userphoto">
-                        <img className="photo" src={profile.photo} alt="user profile photo" />
+            <div className={styles.profile}>
+                <div className={styles.upper}>
+                    <div>
+                        <img className={styles.photo} src={profile.photo} alt="user profile photo" />
                     </div>
-                    <div className="uname">{profile.name}</div>
+                    <div className={styles.uname}>{profile.name}</div>
 
                 </div>
 
-                <div className="middle common">
-                    <div className="mtitle title">Personal Information</div>
-                    <div className="labdata">
-                        <div className="lable">
-                            <div className="name ltext">Name</div>
-                            <div className="email ltext">Email</div>
-                            <div className="mobile ltext">Phone No.</div>
-                            <div className="gender ltext"> Gender</div>
+                <div className={styles.common}>
+                    <div className={styles.mtitle}>Personal Information</div>
+                    <div className={styles.labdata}>
+                        <div className={styles.lable}>
+                            <div className={styles.ltext}>Name</div>
+                            <div className={styles.ltext}>Email</div>
+                            <div className={styles.ltext}>Phone No.</div>
+                            <div className={styles.ltext}> Gender</div>
                         </div>
-                        <div className="data">
-                            <div className="dname dtext">{profile.name}</div>
-                            <div className="demail dtext">{profile.email}</div>
-                            <div className="dmobile dtext">{profile.mobile_no}</div>
-                            <div className="dgender dtext">{profile.gender}</div>
+                        <div className={styles.data}>
+                            <div className={styles.dtext}>{profile.name}</div>
+                            <div className={styles.dtext}>{profile.email}</div>
+                            <div className={styles.dtext}>{profile.mobile_no}</div>
+                            <div className={styles.dtext}>{profile.gender}</div>
                         </div>
                     </div>
                 </div>
 
-                <div className="middlesecond ">
-                    <button onClick={() => { router.push("/cart") }} className="m2btn pointer common cart">Cart</button>
-                    <button onClick={() => { router.push("/wishlist") }} className="m2btn common pointer cart">Wishlist</button>
-                    <button onClick={() => { router.push("/orders") }} className="m2btn common pointer cart">Orders</button>
-                    <button onClick={() => { router.push("/addresses") }} className="m2btn common pointer cart">Addresses</button>
+                <div className={styles.middlesecond}>
+                    <button onClick={() => { router.push("/cart") }} className={`${styles.m2btn} pointer ${styles.common} cart`}>Cart</button>
+                    <button onClick={() => { router.push("/wishlist") }} className={`${styles.m2btn} ${styles.common} pointer cart`}>Wishlist</button>
+                    <button onClick={() => { router.push("/orders") }} className={`${styles.m2btn} ${styles.common} pointer cart`}>Orders</button>
+                    <button onClick={() => { router.push("/addresses") }} className={`${styles.m2btn} ${styles.common} pointer cart`}>Addresses</button>
                 </div>
 
-                <div className="lower">
-                    <button onClick={() => { router.push("/editprofile") }} className="lbtn pointer editprofile">Edit Profile</button>
-                    <button className="lbtn pointer logout" onClick={logout}>Logout</button>
+                <div className={styles.lower}>
+                    <button onClick={() => { router.push("/editprofile") }} className={`${styles.lbtn} pointer ${styles.editprofile}`}>Edit Profile</button>
+                    <button className={`${styles.lbtn} pointer ${styles.logout}`} onClick={logout}>Logout</button>
                 </div>
 
-                <div className=" lower list">
-                    <button className="lbtn listbtn" onClick={()=>{router.replace("/lists")}}>List Product</button>
+                <div className={`${styles.lower} list`}>
+                    <button className={`${styles.lbtn} listbtn`} onClick={() => { router.replace("/lists") }}>List Product</button>
                 </div>
             </div>
         </>

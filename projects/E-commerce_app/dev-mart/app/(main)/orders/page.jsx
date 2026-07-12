@@ -1,11 +1,13 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import Ordercard from "@/components/ordercard";
-import "./order.css"
+import styles from "./order.module.css"
 import { useAuth } from "@/app/authprovider";
 import { useRouter } from "next/navigation";
 import { app } from "@/app/firebase"
 import { Firestore, getDocs, getDoc, collection, doc, getFirestore } from "firebase/firestore";
+import Loading from "@/components/loading";
+import NoDataAvialble from "@/components/nodataavialblle";
 
 const firestore = getFirestore(app)
 
@@ -14,6 +16,9 @@ const Orders = () => {//========================================================
     const router = useRouter()
 
     const [itemsdata, setitemsdata] = useState([])
+    const [pageloading, setpageloading] = useState(true)
+    const [empty, setempty] = useState(0)
+
 
     useEffect(() => {
         if (loading) return
@@ -29,6 +34,7 @@ const Orders = () => {//========================================================
     const readbuy = async (id) => {
         const collectionref = collection(firestore, "users", id, "buyed")
         const snapshot = await getDocs(collectionref)
+        setempty(snapshot.docs.length)
         const productList = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data()
@@ -45,12 +51,17 @@ const Orders = () => {//========================================================
             })
         );
         setitemsdata(productDetails)
+        setpageloading(false)
     }
+
+    if (pageloading) return <Loading />
+
+    else if (!empty) return <NoDataAvialble message="Please Buy something" />
 
 
     return (
         <>
-            <div className="header">Your all Orders</div>
+            <div className={styles.header}>Your all Orders</div>
             {itemsdata.map((item) => (
                 <Ordercard key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
             ))}
