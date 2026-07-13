@@ -92,15 +92,15 @@
 
     .card {
     margin: 5px;
-    width: 130px;
+    width: 160px;
     padding: 5px;
     box-shadow: 0 0 10px 1px black;
     position: relative;
 }
 
 .photo {
-    width: 120px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
 }
 
 .title {
