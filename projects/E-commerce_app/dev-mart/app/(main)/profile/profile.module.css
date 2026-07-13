@@ -94,9 +94,6 @@
     height: 50px;
     border-radius: 10px;
     font-weight: bolder;
-    margin-bottom: 40px;
-    background-color: #ffae00;
-
 }
 
 .editprofile {
@@ -105,4 +102,60 @@
 
 .logout {
     background-color: rgb(255, 0, 0);
+}
+
+.list {
+    background-color: #ffae00;
+    margin-bottom: 40px;
+    width: 400px;
+}
+
+@media (max-width: 480px) {
+
+    .common {
+        padding: 5px;
+        margin: 10px 5px;
+    }
+
+    .upper {
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .uname {
+        font-size: 25px;
+    }
+
+    .mtitle {
+        font-size: 20px;
+    }
+
+    .lable,
+    .data {
+        gap: 4px;
+    }
+
+    .ltext {
+        font-size: 16px;
+    }
+
+    .dtext {
+        font-size: 16px;
+    }
+
+    .m2btn {
+        height: 90px;
+        width: 130px;
+    }
+
+    .lbtn {
+        width: 140px;
+        height: 40px;
+        border-radius: 10px;
+        font-weight: bolder;
+    }
+
+    .list{
+        width: 260px;
+    }
 }

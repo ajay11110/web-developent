@@ -105,7 +105,7 @@ const Profile = () => {//=======================================================
                 </div>
 
                 <div className={`${styles.lower} list`}>
-                    <button className={`${styles.lbtn} listbtn`} onClick={() => { router.replace("/lists") }}>List Product</button>
+                    <button className={`${styles.lbtn} ${styles.list}`} onClick={() => { router.replace("/lists") }}>List Product</button>
                 </div>
             </div>
         </>

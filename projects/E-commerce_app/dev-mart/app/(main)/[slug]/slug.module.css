@@ -1,67 +1,68 @@
-.ipage{
+.ipage {
     display: flex;
     flex-direction: column;
     padding: 20px;
 }
 
-.iimg{
+.iimg {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.iphoto{
+.iphoto {
     height: 400px;
     border-radius: 10px;
 }
 
-.ititle{
+.ititle {
     font-size: 40px;
     font-weight: bolder;
     padding-left: 10px;
 }
 
-.iprice{
+.iprice {
     color: brown;
     font-size: 30px;
     font-weight: bold;
     padding-left: 10px;
 }
 
-.idescription{
+.idescription {
     font-size: 25px;
     color: grey;
     padding-left: 15px;
 }
 
-.ibtns{
+.ispecification {
+    font-size: 25px;
+    color: rgb(0, 0, 0);
+    padding-left: 15px;
+}
+
+.ibtns {
     display: flex;
     justify-content: space-around;
 }
 
-.ibtn{
+.ibtn {
     padding: 15px 50px;
-     border: none;
+    border: none;
     border-radius: 10px;
     font-size: 20px;
     font-weight: bolder;
     margin: 20px;
 }
 
-.ibuy{
+.ibuy {
     background-color: rgb(0, 255, 0);
 }
 
-.iadd{
+.iadd {
     background-color: #ff8c00;
 }
 
-.iexdes{
-    font-size: 23px;
-    padding-left: 15px;
-}
-
-.iexploremoretitle{
+.iexploremoretitle {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,4 +74,55 @@
 .sec {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+@media (max-width: 480px) {
+
+    .ipage {
+        padding: 0;
+    }
+
+    .iphoto {
+        width: 280px;
+        object-fit: contain;
+        border-radius: 10px;
+        padding-top: 10px;
+    }
+
+    .ititle {
+        font-size: 30px;
+        padding-left: 5px;
+    }
+
+    .iprice {
+        color: rgb(255, 0, 0);
+        font-size: 25px;
+        margin: 10px 10px;
+    }
+
+    .idescription {
+        font-size: 20px;
+        padding-left: 5px;
+    }
+
+    .ispecification {
+        font-size: 20px;
+        padding-left: 5px;
+    }
+
+    .ibtn {
+        padding: 5px;
+        font-size: 16px;
+        margin: 15px 5px;
+    }
+
+    .iexploremoretitle {
+        font-size: 25px;
+        margin: 20px 0;
+    }
+
+    .sec {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
 }

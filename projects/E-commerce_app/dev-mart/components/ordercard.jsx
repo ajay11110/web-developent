@@ -13,12 +13,14 @@ const Ordercard = ({ type, url, title, description, price }) => {
                     <div className={styles.lowerpart}>
                         <div className={styles.title}>{title}</div>
                         <div className={styles.description}>{description}</div>
-                        <span className="pricetitle">Price : only </span>
-                        <span className={styles.price}>{price}</span>
+                        <div>
+                            <span className="pricetitle">Price : only </span>
+                            <span className={styles.price}>{price}</span>
+                        </div>
+                        <div className={styles.btns}>
+                            <button className={`${styles.btn} ${styles.buy}`}>Arriving Tommorow</button>
+                        </div>
                     </div>
-                </div>
-                <div className={styles.btns}>
-                    <button className={`${styles.btn} ${styles.buy}`}>Arriving Tommorow</button>
                 </div>
             </div>
         </>

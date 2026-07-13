@@ -41,8 +41,6 @@ const Auth = () => {
 
     const router = useRouter()
 
-    // const user = useAuth()
-
     const signupbtn = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((value) => { writeUserData(name, email, password, value.user.uid) })

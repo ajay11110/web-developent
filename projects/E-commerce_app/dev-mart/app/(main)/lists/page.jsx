@@ -76,7 +76,7 @@ const Lists = () => {//=========================================================
                             <option value="watch">Watches</option>
                             <option value="cloth">clothes</option>
                             <option value="book">Books</option>
-                            <option value="homedecor">Home Decor</option>
+                            <option value="home decor">Home Decor</option>
                         </select>
                         <input ref={nameref} className={styles.dtext} type="text" />
                         <input ref={descriptionref} className={styles.dtext} type="text" />

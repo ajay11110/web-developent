@@ -34,7 +34,7 @@
     cursor: pointer;
 }
 
-.cartbtn{
+.cartbtn {
     font-size: 20px;
     font-weight: bold;
     background-color: rgb(0, 255, 0);
@@ -42,4 +42,29 @@
     border-radius: 10px;
     padding: 4px;
     margin-right: 10px;
+}
+
+
+@media (max-width: 480px) {
+   
+    .brand {
+        font-size: 20px;
+        padding-left: 10px;
+    }
+
+    .navsidebar {
+        gap: 10px;
+    }
+
+    .navtitle {
+        font-size: 15px;
+    }
+
+    .cartbtn {
+        font-size: 15px;
+      
+        padding: 2px;
+    }
+
+
 }

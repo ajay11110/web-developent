@@ -17,12 +17,13 @@ const Wishlistcard = ({ url, title, description, price, onremove, oncart }) => {
                             <span className="pricetitle">Price : only </span>
                             <span className={styles.price}>{price}</span>
                         </div>
+                        <div className={styles.btns}>
+                            <button onClick={onremove} className={`${styles.btn} ${styles.add} pointer`}>Remove from Wishlist</button>
+                            <button onClick={oncart} className={`${styles.btn} ${styles.buy} pointer`}>Add to Cart</button>
+                        </div>
                     </div>
                 </div>
-                <div className={styles.btns}>
-                    <button onClick={onremove} className={`${styles.btn} ${styles.add} pointer`}>Remove from Wishlist</button>
-                    <button onClick={oncart} className={`${styles.btn} ${styles.buy} pointer`}>Add to Cart</button>
-                </div>
+
             </div>
         </>
     )

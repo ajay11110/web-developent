@@ -89,11 +89,8 @@ export default function Itempage() {//==========================================
       </div>
 
       <div className="iextra">
-        <div className={styles.ititle}>
+        <div className={styles.ispecification}>
           {details.specification}
-        </div>
-        <div className={styles.iexdes}>
-          very premium phone in this budget
         </div>
       </div>
 

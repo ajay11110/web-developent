@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./wishlistcard.module.css"
 
-const Cartcard = ({ type, url, title, description, price , removebtn, buybtn}) => {
+const Cartcard = ({ type, url, title, description, price, removebtn, buybtn }) => {
     return (
         <>
             <div className={`${styles.card} pointer`}>
@@ -17,11 +17,11 @@ const Cartcard = ({ type, url, title, description, price , removebtn, buybtn}) =
                             <span className="pricetitle">Price : only </span>
                             <span className={styles.price}>{price}</span>
                         </div>
+                        <div className={styles.btns}>
+                            <button onClick={removebtn} className={`${styles.btn} ${styles.add} pointer`}>Remove from Cart</button>
+                            <button onClick={buybtn} className={`${styles.btn} ${styles.buy} pointer`}>Buy Now</button>
+                        </div>
                     </div>
-                </div>
-                <div className={styles.btns}>
-                    <button onClick={removebtn} className={`${styles.btn} ${styles.add} pointer`}>Remove from Cart</button>
-                    <button onClick={buybtn} className={`${styles.btn} ${styles.buy} pointer`}>Buy Now</button>
                 </div>
             </div>
         </>

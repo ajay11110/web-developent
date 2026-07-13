@@ -10,11 +10,11 @@
     border-radius: 10px;
     padding: 10px;
     box-shadow: 0 0 20px 2px black;
+    position: relative;
 }
 
 .lowerpart {
     background-color: rgb(255, 255, 255);
-    ;
 }
 
 .img {
@@ -23,11 +23,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
 }
 
 .photo {
     width: 180px;
+    height: 180px;
+    object-fit: cover;
     border-radius: 10px;
 }
 
@@ -42,7 +43,7 @@
 }
 
 .price {
-    color: rgb(0, 255, 238);
+    color: rgb(255, 0, 0);
     font-size: 20px;
     font-weight: bold;
 }
@@ -85,4 +86,45 @@
 
 .wishlistBtnActive {
     color: #ff1744;
+}
+
+@media (max-width: 480px) {
+
+    .card {
+    margin: 5px;
+    width: 130px;
+    padding: 5px;
+    box-shadow: 0 0 10px 1px black;
+    position: relative;
+}
+
+.photo {
+    width: 120px;
+    height: 140px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 12px;
+}
+
+.price {
+    font-size: 14px;
+}
+
+.btn {
+    padding: 4px;
+    margin-top: 3px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.wishlist-btn {
+    top: 10px;
+    right: 2px;
+}
 }
