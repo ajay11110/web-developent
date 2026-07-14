@@ -46,9 +46,13 @@
 
 
 @media (max-width: 480px) {
+
+    .navbar{
+        padding: 20px 0;
+    }
    
     .brand {
-        font-size: 20px;
+        font-size: 30px;
         padding-left: 10px;
     }
 
@@ -57,12 +61,11 @@
     }
 
     .navtitle {
-        font-size: 15px;
+        font-size: 18px;
     }
 
     .cartbtn {
         font-size: 15px;
-      
         padding: 2px;
     }
 
