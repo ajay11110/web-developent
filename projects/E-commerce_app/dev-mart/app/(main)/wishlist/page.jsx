@@ -1,6 +1,6 @@
 "use client"
 import Wishlistcard from "@/components/wishlistcard";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./wishlist.module.css"
 import { app } from "@/app/firebase"
 import { Firestore, writeBatch, setDoc, getDocs, collection, getFirestore, doc, getDoc, deleteDoc } from "firebase/firestore";
@@ -8,6 +8,7 @@ import { useAuth } from "@/app/authprovider";
 import { useRouter } from "next/navigation";
 import Loading from "@/components/loading";
 import NoDataAvialble from "@/components/nodataavialblle";
+import Popup from "@/components/popup";
 
 const firestore = getFirestore(app)
 
@@ -15,7 +16,7 @@ const Wishlist = () => {//=====================================================
 
     const { user, loading } = useAuth()
     const router = useRouter()
-
+    const popupref = useRef()
     const [items, setitems] = useState([])
     const [pageloading, setpageloading] = useState(true)
     const [empty, setempty] = useState(0)
@@ -59,12 +60,14 @@ const Wishlist = () => {//=====================================================
             itemId: id
         })
         await removefn(id)
+        popupref.current.popup("Item added to Cart")
     }
 
     const removefn = async (id) => {
         const docref = doc(firestore, "users", user.email, "wishlist", id)
         deleteDoc(docref)
         readWishlist()
+        popupref.current.popup("Item removed from Wishlist")
     }
 
     const addAll = async () => {
@@ -93,6 +96,7 @@ const Wishlist = () => {//=====================================================
             {items.map((item) => (
                 <Wishlistcard key={item.slug} oncart={() => { cartfn(item.slug) }} onremove={() => { removefn(item.slug) }} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
             ))}
+            <Popup ref={popupref} />
             <div className={styles.buyall}>
                 <button onClick={addAll} className={styles.buyallbtn}>Add all to Cart</button>
             </div>

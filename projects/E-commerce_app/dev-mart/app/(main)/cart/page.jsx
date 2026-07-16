@@ -1,6 +1,6 @@
 "use client"
 import Cartcard from "@/components/cartcard";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "./cart.module.css"
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/authprovider";
@@ -8,6 +8,7 @@ import { app } from "@/app/firebase"
 import { Firestore, doc, deleteDoc, getDoc, getDocs, collection, getFirestore } from "firebase/firestore";
 import Loading from "@/components/loading";
 import NoDataAvialble from "@/components/nodataavialblle";
+import Popup from "@/components/popup";
 
 const firestore = getFirestore(app)
 
@@ -15,7 +16,7 @@ const Cart = () => {//=====================================================
 
     const { user, loading } = useAuth()
     const router = useRouter()
-
+    const popupref = useRef()
     const [itemsdata, setitemsdata] = useState([])
     const [pageloading, setpageloading] = useState(true)
     const [empty, setempty] = useState(0)
@@ -64,6 +65,7 @@ const Cart = () => {//=====================================================
         const docref = doc(firestore, "users", user.email, "cart", slug)
         await deleteDoc(docref)
         readcart(user.email)
+        popupref.current.popup("Item removed from Cart")
     }
 
     const buyallfn = () => {
@@ -82,6 +84,7 @@ const Cart = () => {//=====================================================
             {itemsdata.map((item) => (
                 <Cartcard removebtn={() => { removefn(item.slug) }} buybtn={() => { buyfn(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
             ))}
+            <Popup ref={popupref} />
             <div className={styles.buyall}>
                 <button onClick={buyallfn} className={styles.buyallbtn}>Buy all</button>
             </div>

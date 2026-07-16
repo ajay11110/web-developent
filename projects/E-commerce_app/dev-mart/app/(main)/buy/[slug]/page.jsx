@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Buycard from "@/components/buycard";
 import { useParams, useRouter } from "next/navigation";
 import styles from "./process.module.css"
@@ -7,6 +7,7 @@ import { useAuth } from "@/app/authprovider";
 import { app } from "@/app/firebase"
 import { doc, Firestore, getDoc, getFirestore, setDoc, deleteDoc } from "firebase/firestore";
 import Loading from "@/components/loading";
+import Popup from "@/components/popup";
 
 const firestore = getFirestore(app)
 
@@ -14,6 +15,8 @@ const Process = () => {//=======================================================
 
     const { slug } = useParams()
     const { user, loading } = useAuth()
+
+    const popupref = useRef()
 
     const router = useRouter()
 
@@ -26,9 +29,7 @@ const Process = () => {//=======================================================
         if (!user) {
             router.replace("/auth")
         }
-
         readData()
-
     })
 
     const readData = async () => {
@@ -44,7 +45,10 @@ const Process = () => {//=======================================================
             itemId: slug
         })
         await removefn(slug)
-        router.replace("/orders")
+        setTimeout(() => {
+            router.replace("/orders")
+        }, 1000);
+        popupref.current.popup("Thank you for buying from Dev Mart")
     }
 
     const removefn = async (slug) => {
@@ -61,17 +65,18 @@ const Process = () => {//=======================================================
             <div className="start">
                 <Buycard type={productdata.type} url={productdata.photo} title={productdata.name} description={productdata.description} price={productdata.price} />
             </div>
+            <Popup ref={popupref} />
             <div className="productprice">
                 <span className={styles.text}>Product price - </span>
                 <span className={styles.pricetext}>{productdata.price}</span>
             </div>
             <div className="gst">
                 <span className={styles.text}>GST - </span>
-                {!load && (<span className={styles.pricetext}>{(productdata.price) * 18 / 100}</span>)}
+                {!load && (<span className={styles.pricetext}>{(productdata.price.replace(/\D/g, "")) * 18 / 100}</span>)}
             </div>
             <div className="totalprice">
                 <span className={`${styles.text} ${styles.imptext}`}>Total price - </span>
-                {!load && (<span className={styles.pricetext}>{(productdata.price) * 1.18}</span>)}
+                {!load && (<span className={styles.pricetext}>{(productdata.price.replace(/\D/g, "")) * 1.18}</span>)}
             </div>
             <div className={styles.proceed}>
                 <button onClick={proceed} className={styles.proceedbtn}>Proceed</button>

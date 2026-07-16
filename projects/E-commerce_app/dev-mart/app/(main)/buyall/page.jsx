@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Buycard from "@/components/buycard";
 import { useRouter } from "next/navigation";
 import styles from "../buy/[slug]/process.module.css"
@@ -7,6 +7,7 @@ import { useAuth } from "@/app/authprovider";
 import { app } from "@/app/firebase"
 import { doc, getDoc, collection, Firestore, getDocs, getFirestore, writeBatch } from "firebase/firestore";
 import Loading from "@/components/loading";
+import Popup from "@/components/popup";
 
 const firestore = getFirestore(app)
 
@@ -15,6 +16,8 @@ const Buyall = () => {//========================================================
     const { user, loading } = useAuth()
 
     const router = useRouter()
+
+    const popupref = useRef()
 
     const [itemsdata, setitemsdata] = useState([])
     const [price, setprice] = useState(0)
@@ -53,7 +56,7 @@ const Buyall = () => {//========================================================
         setitemsdata(productDetails)
 
         const total = productDetails.reduce(
-            (sum, product) => sum + (Number(product.price) || 0), 0);
+            (sum, product) => sum + (Number(product.price.replace(/\D/g, "")) || 0), 0);
         setprice(total)
         setload(false)
     }
@@ -71,7 +74,10 @@ const Buyall = () => {//========================================================
             batch.delete(docRef2)
         });
         await batch.commit();
-        router.replace("/orders")
+        popupref.current.popup("Thank you for buying from Dev Mart")
+        setTimeout(() => {
+            router.replace("/orders")
+        }, 1000);
     };
 
     if (load) {
@@ -84,7 +90,7 @@ const Buyall = () => {//========================================================
                 <Buycard key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
 
             ))}
-
+            <Popup ref={popupref} />
             <div className="productprice">
                 <span className={styles.text}>Product price - </span>
                 <span className={styles.pricetext}>{price}</span>

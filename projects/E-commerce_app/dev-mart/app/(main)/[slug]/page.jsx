@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./slug.module.css"
 import Itemcard from "@/components/itemcard";
 import { Firestore, doc, getDoc, getDocs, collection, getFirestore, gotdoc, setDoc } from "firebase/firestore";
@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/authprovider";
 import Loading from "@/components/loading";
+import Popup from "@/components/popup";
 
 const firestore = getFirestore(app)
 
@@ -16,6 +17,9 @@ export default function Itempage() {//==========================================
   const { user, loading } = useAuth()
   const { slug } = useParams()
   const router = useRouter()
+  const popupref = useRef()
+
+  let message = null
 
   const [details, setdetails] = useState({})
   const [allproduct, setallproduct] = useState([])
@@ -49,14 +53,11 @@ export default function Itempage() {//==========================================
     await setDoc(docref, {
       itemId: slug
     })
+    popupref.current.popup("Item added to Wishlist")
   }
 
-  const buyfn = async () => {
-    const docref = doc(firestore, "users", user.email, "buyed", slug)
-    await setDoc(docref, {
-      itemId: slug
-    })
-
+  const buyfn = () => {
+    router.replace(`/buy/${slug}`)
   }
 
   const cartfn = async () => {
@@ -64,6 +65,7 @@ export default function Itempage() {//==========================================
     await setDoc(docref, {
       itemId: slug
     })
+    popupref.current.popup("Item added to Cart")
   }
 
   if (pageLoading) {
@@ -76,6 +78,7 @@ export default function Itempage() {//==========================================
 
   else return (
     <div className={styles.ipage}>
+          <Popup ref={popupref} />
       <div className={styles.iimg}>
         <img className={styles.iphoto} src={details.photo} alt="Product photo" />
       </div>

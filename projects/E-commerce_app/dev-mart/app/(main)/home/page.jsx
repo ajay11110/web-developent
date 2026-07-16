@@ -6,9 +6,10 @@ import Loading from "@/components/loading";
 import Link from "next/link";
 import { app } from "../../firebase"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Firestore, getDocs, doc, getFirestore, collection, setDoc } from "firebase/firestore";
+import Popup from "@/components/popup";
 
 const auth = getAuth(app)
 const firestore = getFirestore(app)
@@ -21,6 +22,8 @@ const Home = () => {//====================================================
     const router = useRouter()
 
     const [pageloading, setpageloading] = useState(true);
+
+    const popupref = useRef()
 
     useEffect(() => {
         const stop = onAuthStateChanged(auth, user => {
@@ -60,6 +63,7 @@ const Home = () => {//====================================================
         await setDoc(docref, {
             itemId: id
         })
+        popupref.current.popup("Item added to Cart")
     }
 
     const wishfn = async (e, id) => {
@@ -68,6 +72,7 @@ const Home = () => {//====================================================
         await setDoc(docref, {
             itemId: id
         })
+        popupref.current.popup("Item added to Wishlist")
     }
 
     if (pageloading) {
@@ -89,7 +94,7 @@ const Home = () => {//====================================================
                     </svg>
                 </div>
             </div>
-
+            <Popup ref={popupref} />
             <div className="homebelow">
                 <div className={styles.catagory}>
                     <Link className={styles.capsules} href="#phones">Phones</Link>
