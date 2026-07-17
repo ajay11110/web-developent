@@ -30,12 +30,14 @@
     justify-content: center;
     align-items: center;
     width: 100px;
+    overflow: hidden;
 }
 
 .photo {
     width: 100px;
+    height: 150px;
     object-fit: cover;
-    display: flex;
+    display: block;
     align-items: center;
     border-radius: 10px;
 }
@@ -91,15 +93,15 @@
 }
 
 .description {
-    font-size: 14px;
-}
-
-.price {
     font-size: 16px;
 }
 
+.price {
+    font-size: 18px;
+}
+
 .btn {
-    padding: 3px;
+    padding: 12px 8px;
     border-radius: 5px;
     font-size: 14px;
 }

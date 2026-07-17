@@ -31,6 +31,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .photo {
@@ -38,6 +39,7 @@
     height: 100px;
     object-fit: cover;
     border-radius: 10px;
+    display: block;
 }
 
 .title {

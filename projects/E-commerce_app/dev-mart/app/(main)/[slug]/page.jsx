@@ -48,7 +48,8 @@ export default function Itempage() {//==========================================
     readdata()
   }, [slug, loading, user])
 
-  const wishfn = async () => {
+  const wishfn = async (e, slug) => {
+    e.stopPropagation()
     const docref = doc(firestore, "users", user.email, "wishlist", slug)
     await setDoc(docref, {
       itemId: slug
@@ -56,11 +57,13 @@ export default function Itempage() {//==========================================
     popupref.current.popup("Item added to Wishlist")
   }
 
-  const buyfn = () => {
+  const buyfn = (e, slug) => {
+    e.stopPropagation()
     router.replace(`/buy/${slug}`)
   }
 
-  const cartfn = async () => {
+  const cartfn = async (e, slug) => {
+    e.stopPropagation()
     const docref = doc(firestore, "users", user.email, "cart", slug)
     await setDoc(docref, {
       itemId: slug
@@ -78,7 +81,7 @@ export default function Itempage() {//==========================================
 
   else return (
     <div className={styles.ipage}>
-          <Popup ref={popupref} />
+      <Popup ref={popupref} />
       <div className={styles.iimg}>
         <img className={styles.iphoto} src={details.photo} alt="Product photo" />
       </div>
@@ -86,9 +89,9 @@ export default function Itempage() {//==========================================
       <div className={styles.ititle}>{details.name}</div>
       <div className={styles.idescription}>{details.description}</div>
       <div className={styles.ibtns}>
-        <button onClick={wishfn} className={`${styles.ibtn}  pointer`}>Add to Wishlist</button>
-        <button onClick={buyfn} className={`${styles.ibtn} ${styles.ibuy} pointer`}>Buy Now</button>
-        <button onClick={cartfn} className={`${styles.ibtn} ${styles.iadd} pointer`}>Add to Cart</button>
+        <button onClick={(e) => { wishfn(e, slug) }} className={`${styles.ibtn}  pointer`}>Add to Wishlist</button>
+        <button onClick={(e) => { buyfn(e, slug) }} className={`${styles.ibtn} ${styles.ibuy} pointer`}>Buy Now</button>
+        <button onClick={(e) => { cartfn(e, slug) }} className={`${styles.ibtn} ${styles.iadd} pointer`}>Add to Cart</button>
       </div>
 
       <div className="iextra">
@@ -106,7 +109,7 @@ export default function Itempage() {//==========================================
                 .filter((item) => item.type === details.type)
                 .filter((item) => item.slug !== details.slug)
                 .map((item) => (
-                  <Itemcard onclick={() => { router.replace(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
+                  <Itemcard onclick={() => { router.replace(item.slug) }} onwish={(e) => { wishfn(e, item.slug) }} cartbtn={(e) => { cartfn(e, item.slug) }} buybtn={(e) => { wishfn(e, item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
                 ))}
             </div>
           </section>

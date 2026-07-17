@@ -2,10 +2,10 @@
 import React from "react";
 import styles from "./wishlistcard.module.css"
 
-const Wishlistcard = ({ url, title, description, price, onremove, oncart }) => {
+const Wishlistcard = ({ url, title, description, price, onremove, oncart , onclick}) => {
     return (
         <>
-            <div className={`${styles.card} pointer`}>
+            <div onClick={onclick} className={`${styles.card} pointer`}>
                 <div className={styles.start}>
                     <div className={styles.img}>
                         <img className={styles.photo} src={url} alt="photo" />

@@ -1,4 +1,3 @@
-
 .card {
     border: 1px solid black;
     display: flex;
@@ -23,6 +22,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .photo {
@@ -30,6 +30,7 @@
     height: 180px;
     object-fit: cover;
     border-radius: 10px;
+    display: block;
 }
 
 .title {
@@ -91,40 +92,40 @@
 @media (max-width: 480px) {
 
     .card {
-    margin: 5px;
-    width: 160px;
-    padding: 5px;
-    box-shadow: 0 0 10px 1px black;
-    position: relative;
-}
+        margin: 5px;
+        width: 160px;
+        padding: 5px;
+        box-shadow: 0 0 10px 1px black;
+        position: relative;
+    }
 
-.photo {
-    width: 160px;
-    height: 160px;
-}
+    .photo {
+        width: 160px;
+        height: 160px;
+    }
 
-.title {
-    font-size: 20px;
-    font-weight: bold;
-}
+    .title {
+        font-size: 20px;
+        font-weight: bold;
+    }
 
-.description {
-    font-size: 12px;
-}
+    .description {
+        font-size: 15px;
+    }
 
-.price {
-    font-size: 14px;
-}
+    .price {
+        font-size: 14px;
+    }
 
-.btn {
-    padding: 4px;
-    margin-top: 3px;
-    font-size: 12px;
-    border-radius: 5px;
-}
+    .btn {
+        padding: 8px;
+        margin-top: 3px;
+        font-size: 12px;
+        border-radius: 5px;
+    }
 
-.wishlist-btn {
-    top: 10px;
-    right: 2px;
-}
+    .wishlist-btn {
+        top: 10px;
+        right: 2px;
+    }
 }

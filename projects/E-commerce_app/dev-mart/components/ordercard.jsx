@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./ordercard.module.css"
 
-const Ordercard = ({ type, url, title, description, price }) => {
+const Ordercard = ({ type, url, title, description, price, onclick }) => {
 
     return (
         <>
-            <div className={`${styles.card} pointer`}>
+            <div onClick={onclick} className={`${styles.card} pointer`}>
                 <div className={styles.first}>
                     <div className={styles.img}>
                         <img className={styles.photo} src={url} alt="photo" />

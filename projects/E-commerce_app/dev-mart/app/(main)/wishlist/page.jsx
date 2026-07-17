@@ -94,7 +94,7 @@ const Wishlist = () => {//=====================================================
         <>
             <div className={styles.title}>Wishlist</div>
             {items.map((item) => (
-                <Wishlistcard key={item.slug} oncart={() => { cartfn(item.slug) }} onremove={() => { removefn(item.slug) }} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
+                <Wishlistcard onclick={()=>{router.replace(`/${item.slug}`)}}  key={item.slug} oncart={() => { cartfn(item.slug) }} onremove={() => { removefn(item.slug) }} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
             ))}
             <Popup ref={popupref} />
             <div className={styles.buyall}>

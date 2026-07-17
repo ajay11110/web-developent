@@ -63,7 +63,7 @@ const Orders = () => {//========================================================
         <>
             <div className={styles.header}>Your all Orders</div>
             {itemsdata.map((item) => (
-                <Ordercard key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
+                <Ordercard onclick={()=>{router.replace(`/${item.slug}`)}}  key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
             ))}
         </>
     )

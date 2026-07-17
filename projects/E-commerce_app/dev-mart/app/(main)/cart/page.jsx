@@ -82,7 +82,7 @@ const Cart = () => {//=====================================================
         <>
             <div className={styles.title}>Cart</div>
             {itemsdata.map((item) => (
-                <Cartcard removebtn={() => { removefn(item.slug) }} buybtn={() => { buyfn(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
+                <Cartcard onclick={()=>{router.replace(`/${item.slug}`)}} removebtn={() => { removefn(item.slug) }} buybtn={() => { buyfn(item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
             ))}
             <Popup ref={popupref} />
             <div className={styles.buyall}>
