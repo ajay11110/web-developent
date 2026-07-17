@@ -109,7 +109,7 @@ export default function Itempage() {//==========================================
                 .filter((item) => item.type === details.type)
                 .filter((item) => item.slug !== details.slug)
                 .map((item) => (
-                  <Itemcard onclick={() => { router.replace(item.slug) }} onwish={(e) => { wishfn(e, item.slug) }} cartbtn={(e) => { cartfn(e, item.slug) }} buybtn={(e) => { wishfn(e, item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
+                  <Itemcard onclick={() => { router.replace(item.slug) }} onwish={(e) => { wishfn(e, item.slug) }} cartbtn={(e) => { cartfn(e, item.slug) }} buybtn={(e) => { buyfn(e, item.slug) }} key={item.slug} type={item.type} url={item.photo} title={item.name} description={item.description} price={item.price} />
                 ))}
             </div>
           </section>
