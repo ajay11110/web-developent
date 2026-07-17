@@ -6,7 +6,7 @@
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     padding: 5px;
-    justify-content: space-between;
+    justify-content: start;
     box-shadow: 0 0 15px 1px black;
     margin-bottom: 15px;
 }
@@ -60,9 +60,10 @@
 
 .btns {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     gap: 10px;
+    width: 250px;
 }
 
 .btn {
@@ -80,7 +81,7 @@
     background-color: rgb(255, 153, 0);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
 
 .card {
     margin: 3px;
@@ -100,8 +101,12 @@
     font-size: 18px;
 }
 
+.btns{
+    width: 200px;
+}
+
 .btn {
-    padding: 12px 8px;
+    padding: 10px 4px;
     border-radius: 5px;
     font-size: 14px;
 }

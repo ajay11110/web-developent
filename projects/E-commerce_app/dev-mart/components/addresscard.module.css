@@ -32,7 +32,7 @@
     background-color: orangered;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
     .btn {
         border-radius: 5px;
         margin: 1px;

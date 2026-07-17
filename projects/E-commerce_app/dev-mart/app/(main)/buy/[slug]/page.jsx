@@ -72,11 +72,11 @@ const Process = () => {//=======================================================
             </div>
             <div className="gst">
                 <span className={styles.text}>GST - </span>
-                {!load && (<span className={styles.pricetext}>{(productdata.price.replace(/\D/g, "")) * 18 / 100}</span>)}
+                {!load && (<span className={styles.pricetext}>{Number((productdata.price.replace(/\D/g, "")) * 18 / 100).toFixed(2)}</span>)}
             </div>
             <div className="totalprice">
                 <span className={`${styles.text} ${styles.imptext}`}>Total price - </span>
-                {!load && (<span className={styles.pricetext}>{(productdata.price.replace(/\D/g, "")) * 1.18}</span>)}
+                {!load && (<span className={styles.pricetext}>{Number((productdata.price.replace(/\D/g, "")) * 1.18).toFixed(2)}</span>)}
             </div>
             <div className={styles.proceed}>
                 <button onClick={proceed} className={styles.proceedbtn}>Proceed</button>

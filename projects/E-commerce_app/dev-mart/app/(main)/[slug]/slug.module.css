@@ -13,6 +13,7 @@
 .iphoto {
     height: 400px;
     border-radius: 10px;
+    object-fit: contain;
 }
 
 .ititle {
@@ -22,7 +23,7 @@
 }
 
 .iprice {
-    color: brown;
+    color: rgb(255, 0, 0);
     font-size: 30px;
     font-weight: bold;
     padding-left: 10px;
@@ -77,7 +78,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
 
     .ipage {
         padding: 0;
@@ -85,8 +86,6 @@
 
     .iphoto {
         width: 280px;
-        object-fit: contain;
-        border-radius: 10px;
         padding-top: 10px;
     }
 
@@ -96,7 +95,6 @@
     }
 
     .iprice {
-        color: rgb(255, 0, 0);
         font-size: 25px;
         margin: 10px 10px;
     }
@@ -125,5 +123,99 @@
     .sec {
         display: grid;
         grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 760px) {
+    .iphoto {
+        width: 500px;
+    }
+
+    .ititle {
+        font-size: 30px;
+        padding-left: 5px;
+    }
+
+    .iprice {
+        font-size: 25px;
+        margin: 10px 10px;
+    }
+
+    .idescription {
+        font-size: 20px;
+        padding-left: 5px;
+    }
+
+    .ispecification {
+        font-size: 20px;
+        padding-left: 5px;
+    }
+
+    .ibtn {
+        padding: 10px 30px;
+        font-size: 16px;
+        margin: 15px 5px;
+    }
+
+    .iexploremoretitle {
+        font-size: 30px;
+        margin: 20px 0;
+    }
+
+    .sec {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 760px) and (max-width: 1000px) {
+    .iphoto {
+        width: 760px;
+    }
+
+    .ititle {
+        font-size: 30px;
+        padding-left: 5px;
+    }
+
+    .iprice {
+        font-size: 25px;
+        margin: 10px 10px;
+    }
+
+    .idescription {
+        font-size: 20px;
+        padding-left: 5px;
+    }
+
+    .ispecification {
+        font-size: 20px;
+        padding-left: 5px;
+    }
+
+    .ibtn {
+        padding: 20px 30px;
+        font-size: 18px;
+        margin: 15px 5px;
+    }
+
+    .iexploremoretitle {
+        font-size: 30px;
+        margin: 20px 0;
+    }
+
+    .sec {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 1000px) and (max-width: 1200px) {
+
+    .iphoto {
+        width: 1000px;
+    }
+
+    .sec {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }

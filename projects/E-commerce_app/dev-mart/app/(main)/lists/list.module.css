@@ -56,7 +56,7 @@
     background-color: orange;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
 
     .lable {
         gap: 18px;

@@ -7,7 +7,7 @@
     border-radius: 10px;
     padding: 5px;
     box-shadow: 0 0 20px 2px black;
-    justify-content: space-between;
+    justify-content: start;
     margin-bottom: 15px;
 }
 
@@ -75,7 +75,7 @@
     background-color: #04ff00;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
 
     .card {
         margin: 3px;

@@ -17,9 +17,6 @@ const Buycard = ({ type, url, title, description, price }) => {
                         <span className={styles.price}>{price}</span>
                     </div>
                 </div>
-                <div className={styles.btns}>
-                    {/* <button className="btn buy">Arriving Tommorow</button> */}
-                </div>
             </div>
         </>
     )

@@ -50,7 +50,7 @@
     background-color: orange;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 500px) {
 
     .labdata {
         gap: 6px;
