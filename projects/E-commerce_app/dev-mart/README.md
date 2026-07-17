@@ -7,7 +7,6 @@
 [![Next.js](https://img.shields.io/badge/Next.js-16.2.9-black?logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-19.2.4-61DAFB?logo=react)](https://react.dev/)
 [![Firebase](https://img.shields.io/badge/Firebase-12.15.0-FFCA28?logo=firebase)](https://firebase.google.com/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
 
 </div>
 
@@ -15,17 +14,17 @@
 
 ## ✨ Features
 
-- 🔐 **Authentication** — Secure user login & signup with Firebase Auth (Email/Password & Google Sign-In)
-- 🏠 **Home Page** — Browse all available products with a clean, responsive grid layout
-- 🔍 **Product Details** — Dedicated product pages with full descriptions, specifications, and related items
-- 🛒 **Shopping Cart** — Add, remove, and manage items in your cart before checkout
-- ❤️ **Wishlist** — Save your favorite products for later
-- 📦 **Orders** — View your complete order history
-- 👤 **User Profile** — Manage your profile information and settings
-- ✏️ **Edit Profile** — Update your name, mobile number, and gender
-- 🏠 **Address Management** — Add, edit, and delete multiple delivery addresses
-- 💳 **Checkout Flow** — Smooth buy-now and buy-all cart checkout experience
-- 📱 **Responsive Design** — Fully optimized for mobile, tablet, and desktop
+- 🔐 **Authentication** — Secure sign-in and sign-up with Firebase Auth using email/password and Google sign-in
+- 🏠 **Home Page** — Browse products in a responsive grid layout with category-based navigation
+- 🔍 **Product Details** — Dedicated product pages with title, description, pricing, and image preview
+- 🛒 **Shopping Cart** — Add, remove, and manage cart items before checkout
+- ❤️ **Wishlist** — Save favorite products for later viewing
+- 📦 **Orders** — Track completed purchases and order history
+- 👤 **User Profile** — View and manage profile information
+- ✏️ **Edit Profile** — Update name, phone number, and gender
+- 🏠 **Address Management** — Add and manage delivery addresses
+- 💳 **Checkout Flow** — Smooth single-item and cart-wide purchase flow
+- 📱 **Responsive Design** — Optimized for mobile, tablet, and desktop screens
 
 ---
 
@@ -33,51 +32,67 @@
 
 | Category | Technology |
 |----------|------------|
-| **Framework** | [Next.js](https://nextjs.org/) (App Router) |
-| **Frontend** | [React](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/) |
-| **Backend** | [Firebase](https://firebase.google.com/) (Auth, Firestore, Storage) |
+| **Framework** | [Next.js](https://nextjs.org/) 16.2.9 (App Router) |
+| **Frontend** | [React](https://react.dev/) 19.2.4 |
+| **Backend** | [Firebase](https://firebase.google.com/) 12.15.0 (Auth + Firestore) |
 | **Language** | JavaScript (ES6+) |
-| **Icons** | Lucide React |
+| **Styling** | CSS Modules |
+| **Utilities** | UUID, dotenv |
 
+---
+
+
+---
+
+## Check it live
+
+1. **Open this link in browser**
+
+```bash
+https://e-commerce-swart-three-85.vercel.app
+```
+2. **Use this temporary email or create new account**
+
+```bash
+test@example.com
+```
+3. **Password**
+
+```bash
+123456
+```
 ---
 
 ## 📸 Screenshots
 
 <div align="center">
 
+### 🔐 Authentication
+<img src="readme photos/login.png" width="80%" alt="Authentication" />
+
 ### 🏠 Home Page
-<img src="readme photos/Screenshot (912).png" width="80%" alt="Home Page" />
+<img src="readme photos/home.png" width="80%" alt="Home Page" />
 
 ### 📦 Product Details
-<img src="readme photos/Screenshot (913).png" width="80%" alt="Product Details" />
+<img src="readme photos/producct page.png" width="80%" alt="Product Details" />
 
 ### 🛒 Shopping Cart
-<img src="readme photos/Screenshot (914).png" width="80%" alt="Shopping Cart" />
+<img src="readme photos/cart.png" width="80%" alt="Shopping Cart" />
 
 ### ❤️ Wishlist
-<img src="readme photos/Screenshot (915).png" width="80%" alt="Wishlist" />
+<img src="readme photos/wishlist.png" width="80%" alt="Wishlist" />
 
 ### 📋 Orders
-<img src="readme photos/Screenshot (916).png" width="80%" alt="Orders" />
+<img src="readme photos/orders.png" width="80%" alt="Orders" />
 
 ### 👤 User Profile
-<img src="readme photos/Screenshot (917).png" width="80%" alt="User Profile" />
+<img src="readme photos/profile.png" width="80%" alt="User Profile" />
 
-### ✏️ Edit Profile
-<img src="readme photos/Screenshot (918).png" width="80%" alt="Edit Profile" />
+### 🛒 Buy single product
+<img src="readme photos/buy product page.png" width="80%" alt="User Profile" />
 
-### 🏠 Address Management
-<img src="readme photos/Screenshot (919).png" width="80%" alt="Address Management" />
-
-### 💳 Checkout
-<img src="readme photos/Screenshot (920).png" width="80%" alt="Checkout" />
-
-### 🔐 Authentication
-<img src="readme photos/Screenshot (921).png" width="80%" alt="Authentication" />
-
-### 📱 Mobile Responsive
-<img src="readme photos/Screenshot (922).png" width="40%" alt="Mobile View" />
-<img src="readme photos/Screenshot (923).png" width="40%" alt="Mobile View 2" />
+### 🛒 Buy multiple products
+<img src="readme photos/buy multiple products.png" width="80%" alt="User Profile" />
 
 </div>
 
@@ -96,8 +111,7 @@
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/ajay11110/web-developent.git
-cd dev-mart
+git clone https://github.com/ajay11110/web-developent/tree/main/projects/E-commerce_app/dev-mart.git
 ```
 
 2. **Install dependencies**
@@ -143,15 +157,15 @@ dev-mart/
 │   │   ├── addresses/       # Manage addresses
 │   │   ├── buy/             # Checkout (single item)
 │   │   ├── buyall/          # Checkout (cart)
-│   │   └── lists/           # Admin: Add products
-│   ├── auth/                # Authentication page
+│   │   └── lists/           # Product listing/admin flow
+│   ├── auth/                # Authentication UI
 │   ├── firebase.js          # Firebase configuration
 │   ├── authprovider.jsx     # Auth context provider
 │   ├── layout.jsx           # Root layout
-│   └── page.jsx             # Landing page (redirects)
-├── components/              # Reusable components
+│   └── page.jsx             # Landing/redirect entry
+├── components/              # Reusable UI components
 ├── public/                  # Static assets
-├── firebase.json            # Firebase config
+├── firebase.json            # Firebase hosting config
 ├── firestore.rules          # Firestore security rules
 ├── firestore.indexes.json   # Firestore indexes
 └── package.json
@@ -163,15 +177,15 @@ dev-mart/
 
 | Component | Description |
 |-----------|-------------|
-| `Itemcard` | Product card displayed in grids |
-| `Cartcard` | Cart item with quantity & remove |
-| `Wishlistcard` | Wishlist item with move-to-cart |
+| `Itemcard` | Product card shown in the home page grid |
+| `Cartcard` | Cart item card with removal actions |
+| `Wishlistcard` | Wishlist item card with move-to-cart support |
 | `Ordercard` | Order history item card |
-| `Buycard` | Checkout product summary |
-| `Addresscard` | Address display & management |
-| `Navbar` | Top navigation with cart/wishlist counts |
+| `Buycard` | Checkout summary card |
+| `Addresscard` | Address display and management UI |
+| `Navbar` | Top navigation with cart and wishlist state |
 | `Loading` | Loading spinner component |
-| `Signin` | Authentication form |
+| `Popup` | Reusable popup modal |
 | `Productpage` | Product detail layout |
 
 ---
@@ -180,10 +194,10 @@ dev-mart/
 
 | Command | Description |
 |---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run start` Start production server |
-| `npm run lint` | Run ESLint |
+| `npm run dev` | Start the Next.js development server |
+| `npm run build` | Create a production build |
+| `npm run start` | Start the production server |
+| `npm run lint` | Run ESLint across the project |
 
 ---
 
