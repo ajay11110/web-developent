@@ -4,19 +4,19 @@ import { useRouter } from "next/navigation";
 import styles from "./auth.module.css"
 import { app } from "../firebase"
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { Firestore, addDoc, doc, collection, getFirestore, setDoc } from "firebase/firestore";
+import { Firestore, doc, getFirestore, setDoc } from "firebase/firestore";
 
 const auth = getAuth(app)
 const googleprovider = new GoogleAuthProvider()
 
 const firestore = getFirestore(app)
 
-const writeUserData = async (name, email, password, uid) => {
-    let result = await setDoc(doc(firestore, "users", email), {
+const writeUserData = async (name, email, password, uid, profilePhoto) => {
+    await setDoc(doc(firestore, "users", email), {
         userName: name,
         email: email,
         password: password,
-        profilePhoto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-TPvhpo33NdVX_qJ9clxyvaJ1-ljChnX-iPhnusqE2w&s",
+        profilePhoto: profilePhoto,
         mobile: "not set yet",
         gender: "not set yet",
         uid: uid
@@ -41,9 +41,9 @@ const Auth = () => {
 
     const router = useRouter()
 
-    const signupbtn = () => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((value) => { writeUserData(name, email, password, value.user.uid) })
+    const signupbtn = async () => {
+        await createUserWithEmailAndPassword(auth, email, password)
+            .then((value) => { writeUserData(name, email, password, value.user.uid, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-TPvhpo33NdVX_qJ9clxyvaJ1-ljChnX-iPhnusqE2w&s") })
             .then(() => { router.replace("/") })
     }
 
@@ -52,10 +52,12 @@ const Auth = () => {
             .then(() => { router.replace("/") })
     }
 
-    const googlelogin = () => {
-        signInWithPopup(auth, googleprovider)
-            .then(router.replace("/"))
-
+    const googlelogin = async () => {
+        await signInWithPopup(auth, googleprovider)
+            .then((snapshot) => {
+                writeUserData(snapshot.user.displayName, snapshot.user.email, "google sign in", snapshot.user.uid, snapshot.user.photoURL)
+                router.replace("/")
+            })
     }
 
     const signuptext = () => {

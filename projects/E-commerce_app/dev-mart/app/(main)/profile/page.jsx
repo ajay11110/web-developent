@@ -1,6 +1,6 @@
 "use client"
 import { app } from "../../firebase"
-import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { Firestore, getDoc, doc, getFirestore } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -47,9 +47,16 @@ const Profile = () => {//=======================================================
     }
 
     const readUserData = async () => {
+        if (!user || !user.email) return
+
         let docref = doc(firestore, "users", user.email)
         const snapshot = await getDoc(docref)
         const data = snapshot.data()
+
+        if (!data) {
+            setpageloading(false)
+            return
+        }
 
         setprofile({
             name: data.userName,
