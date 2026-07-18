@@ -51,6 +51,7 @@ body {
 .input {
     background-color: transparent;
     border: none;
+    border-radius: 10px;
     width: 300px;
     height: 20px;
     font-size: 16px;
@@ -144,11 +145,11 @@ body {
     }
 
     .lables {
-        width: 160px;
+        width: 130px;
     }
 
     .data-s {
-        width: 160px;
+        width: 190px;
     }
 
 
