@@ -32,11 +32,10 @@ const icons = {
     Fog: "🌁"
 }
 
-const api = "f49e13cf0860b25526456471bf08fcd6"
-let city = "delhi"
+let city = "jaipur"
 
 const getdata = async (city) => {
-    let data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api}&units=metric`)
+    let data = await fetch(`/api/weather?city=${city}`)
     let weatherdata = await data.json()
 
     // filling fetched data in html

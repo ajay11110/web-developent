@@ -89,6 +89,7 @@ body {
     font-size: 30px;
     font-weight: 900;
     margin: 10px;
+    align-items: center;
 }
 
 .weather {
