@@ -128,7 +128,7 @@ body {
 
 @media (max-width : 530px) {
     .border {
-        width: 300px;
+        width: 320px;
     }
 
     .inputdiv {
@@ -145,7 +145,7 @@ body {
     }
 
     .lables {
-        width: 130px;
+        width: 140px;
     }
 
     .data-s {
